@@ -1,0 +1,22 @@
+{
+  "niche": "nail-tech",
+  "display_name": "Nail Tech",
+  "common_services": ["Classic Manicure", "Classic Pedicure", "Gel Manicure", "Gel Pedicure", "Acrylic Full Set", "Acrylic Fill", "Dip Powder", "Nail Art (per nail)", "Gel-X Full Set", "Nail Removal"],
+  "avg_price_range": {"min": 25, "max": 150},
+  "content_themes": ["Nail art time-lapses", "Set transformation videos", "Color/design inspiration", "Nail care tips", "Product reviews (gels, acrylics)", "ASMR filing/shaping", "Client nail journey (damaged to healthy)", "Trending nail designs"],
+  "trending_hashtags": ["#nailtech", "#nailart", "#gelnails", "#acrylicnails", "#nailsoftiktok", "#naildesign", "#nailinspo", "#pressonnails", "#gelx", "#dippowder", "#nailfie", "#nailartist"],
+  "seasonal_promos": {
+    "valentines": "Valentine's Nail Art — Heart designs + pink/red sets",
+    "mothers_day": "Mani-Pedi for Mom — Mother's Day gift packages",
+    "prom": "Prom Nails — Full set + nail art special",
+    "summer": "Summer Brights — Neon and tropical sets",
+    "halloween": "Spooky Nails — Halloween nail art collection",
+    "holiday": "Holiday Glam — Glitter and metallic sets + gift cards",
+    "new_year": "Fresh Start Mani — New year, new nails special"
+  },
+  "common_supplies": ["Gel polish collection", "Acrylic powder", "Monomer", "Nail forms/tips", "E-file drill bits", "Nail files (100/180 grit)", "Base coat/top coat", "Cuticle oil", "Nail dehydrator/primer", "Lint-free wipes"],
+  "reorder_cadence_days": 21,
+  "ideal_posting_times": {"weekday": "7:00 PM", "weekend": "11:00 AM"},
+  "competitor_keywords": ["nail salon", "nail bar", "nail studio", "nail spa", "nail lounge"],
+  "client_psychology": "Clients view nails as self-expression and a small luxury they can afford regularly. They browse Instagram and TikTok for design inspiration before booking. Nail art photos are the primary sales tool — your portfolio IS your marketing. Clients are loyal to their nail tech but will switch for better artistry or availability. Consistency in quality and appointment availability matters more than price for most clients."
+}

@@ -1,0 +1,22 @@
+{
+  "niche": "esthetician",
+  "display_name": "Esthetician",
+  "common_services": ["Basic Facial", "Deep Cleanse Facial", "Chemical Peel (light)", "Chemical Peel (medium)", "Microneedling", "Dermaplaning", "Hydrofacial", "LED Light Therapy", "Extractions Add-On"],
+  "avg_price_range": {"min": 65, "max": 300},
+  "content_themes": ["Before/after skin transformations", "Extraction close-ups (satisfying)", "Skincare routine breakdowns", "Ingredient education (retinol, niacinamide, PDRN)", "Client skin journey stories", "Treatment process videos", "Myth-busting (sunscreen, anti-aging)", "Product comparisons (drugstore vs pro-grade)"],
+  "trending_hashtags": ["#esthetician", "#skincare", "#facial", "#skincareroutine", "#glowingskin", "#chemicalpeel", "#microneedling", "#dermaplaning", "#hydrafacial", "#skincarespecialist", "#clearskintips", "#skincaretiktok"],
+  "seasonal_promos": {
+    "valentines": "Glow for Your Date — Couples facial packages",
+    "mothers_day": "Mom Deserves a Glow Up — Facial + LED combo special",
+    "prom": "Prom Prep Facial — Clear skin for the big night",
+    "summer": "Summer Skin Prep — SPF consultation + hydrating facial",
+    "halloween": "Zombie Skin Recovery — Post-Halloween deep cleanse special",
+    "holiday": "Holiday Glow Package — Peel + facial + take-home serum",
+    "new_year": "New Year Skin Reset — January facial series (book 3 save 20%)"
+  },
+  "common_supplies": ["Gauze pads", "Treatment serums (hyaluronic, vitamin C, PDRN)", "Sheet masks/hydrogel masks", "Extraction tools", "Steamer filters", "Gloves", "Microneedling cartridges", "Dermaplaning blades", "Chemical peel solutions", "SPF samples for clients"],
+  "reorder_cadence_days": 14,
+  "ideal_posting_times": {"weekday": "6:00 PM", "weekend": "9:00 AM"},
+  "competitor_keywords": ["skin spa", "facial studio", "skincare clinic", "glow bar", "skin studio"],
+  "client_psychology": "Clients seek visible skin improvement and expert guidance they can't get from products alone. They value education — they want to understand WHY a treatment works. Trust builds slowly through results. Once they see their skin improve, they become loyal monthly clients. Many are frustrated by years of trial-and-error with products and want a professional to take the guesswork out."
+}

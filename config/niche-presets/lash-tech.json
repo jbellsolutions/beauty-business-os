@@ -1,0 +1,22 @@
+{
+  "niche": "lash-tech",
+  "display_name": "Lash Tech",
+  "common_services": ["Classic Full Set", "Volume Full Set", "Hybrid Full Set", "Mega Volume Full Set", "Lash Fill (2-week)", "Lash Fill (3-week)", "Lash Lift & Tint", "Lash Removal"],
+  "avg_price_range": {"min": 45, "max": 300},
+  "content_themes": ["Before/after lash transformations", "Lash mapping close-ups", "Client reveal reactions", "Day-in-the-life of a lash tech", "Lash aftercare tips", "Product reviews (adhesive, tweezers)", "Satisfying lash fan videos", "Lash myth-busting"],
+  "trending_hashtags": ["#lashtech", "#lashextensions", "#lashlift", "#lashartist", "#volumelashes", "#classiclashes", "#hybridlashes", "#lashboss", "#lashmapping", "#megavolumelashes", "#lashfill", "#lashlove"],
+  "seasonal_promos": {
+    "valentines": "Valentine's Glam Set — $25 off full sets this week",
+    "mothers_day": "Treat Mom to Lashes — Gift certificates available",
+    "prom": "Prom Lash Special — Classic set + aftercare kit included",
+    "summer": "Summer-Proof Lashes — Free waterproof sealant with any full set",
+    "halloween": "Halloween Glam — Colored lash accent add-on $15",
+    "holiday": "Holiday Glam Package — Full set + lash bath kit + aftercare",
+    "new_year": "New Year New Lashes — 20% off your first full set"
+  },
+  "common_supplies": ["Lash adhesive", "Lash remover/dissolver", "Under-eye gel pads", "Micro brushes/applicators", "Lash tiles/palettes", "Isolation tweezers", "Volume tweezers", "Primer/pre-treatment", "Lash cleanser", "Mascara wands"],
+  "reorder_cadence_days": 14,
+  "ideal_posting_times": {"weekday": "6:00 PM", "weekend": "10:00 AM"},
+  "competitor_keywords": ["lash studio", "lash bar", "lash lounge", "lash boutique", "lash spa"],
+  "client_psychology": "Clients want to wake up feeling put-together without effort. Lashes are about confidence and saving time on their morning routine. They value consistency — once they find a good lash tech, they rarely switch. Retention is everything. Most clients rebook every 2-3 weeks, making this one of the highest-recurring service niches in beauty."
+}

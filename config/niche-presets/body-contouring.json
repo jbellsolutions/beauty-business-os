@@ -1,0 +1,22 @@
+{
+  "niche": "body-contouring",
+  "display_name": "Body Contouring Specialist",
+  "common_services": ["Ultrasonic Cavitation", "RF Skin Tightening", "Laser Lipo", "EMS Body Sculpting", "Wood Therapy", "Lymphatic Drainage Massage", "Body Wraps", "Cryotherapy Sculpting"],
+  "avg_price_range": {"min": 100, "max": 500},
+  "content_themes": ["Before/after body transformations", "Treatment process videos", "Client measurement reveals", "What to expect at your first session", "Body contouring myth-busting", "Post-treatment care tips", "GLP-1/Ozempic skin tightening content", "Package deal explanations"],
+  "trending_hashtags": ["#bodycontouring", "#bodysculpting", "#cavitation", "#skintightening", "#woodtherapy", "#lymphaticdrainage", "#nonsurgical", "#bodygoals", "#rfskinightening", "#emssculpting", "#fatreduction", "#bodytransformation"],
+  "seasonal_promos": {
+    "valentines": "Love Your Body — Couples body contouring packages",
+    "mothers_day": "Mom's Body Reset — Postpartum sculpting series",
+    "prom": "N/A",
+    "summer": "Summer Body Prep — 6-session package (start now, ready by June)",
+    "halloween": "N/A",
+    "holiday": "New Body New Year — January sculpting series pre-sale",
+    "new_year": "New Year Sculpt — 40% off your first 3-session package"
+  },
+  "common_supplies": ["Cavitation/RF conductive gel (32oz)", "Body wraps", "Electrode pads", "Measuring tape", "Before/after photo backdrop", "Disposable underwear", "Warming blankets", "Wood therapy tools"],
+  "reorder_cadence_days": 10,
+  "ideal_posting_times": {"weekday": "6:00 PM", "weekend": "11:00 AM"},
+  "competitor_keywords": ["body sculpting studio", "contour spa", "sculpt studio", "body clinic", "slim studio"],
+  "client_psychology": "Clients are motivated by visible, measurable results — inches lost, photos that show change. Many have tried diet and exercise without getting the results they want in specific areas. They need reassurance that non-surgical methods actually work. GLP-1 weight loss patients are a growing segment — they've lost weight but have loose skin. Package deals (6-10 sessions) are the standard because results are cumulative. Show measurements and photos to build trust."
+}

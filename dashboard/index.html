@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beauty Business OS — Dashboard</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #0a0a0a;
+    color: #fff;
+    min-height: 100vh;
+    padding: 24px;
+  }
+
+  .dashboard {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* Header */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #1a1a1a;
+  }
+  .header h1 {
+    font-size: 24px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #c9a0dc, #f7c6d0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .header .date {
+    font-size: 14px;
+    color: #666;
+  }
+  .header .status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #4ade80;
+  }
+  .header .status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #4ade80;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  /* Stats Row */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .stat-card {
+    background: #141414;
+    border: 1px solid #222;
+    border-radius: 12px;
+    padding: 20px;
+  }
+  .stat-card .label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #666;
+    margin-bottom: 8px;
+  }
+  .stat-card .value {
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: -1px;
+  }
+  .stat-card .change {
+    font-size: 12px;
+    margin-top: 4px;
+  }
+  .stat-card:nth-child(1) .value { color: #4ade80; }
+  .stat-card:nth-child(2) .value { color: #c9a0dc; }
+  .stat-card:nth-child(3) .value { color: #fdd6a0; }
+  .stat-card:nth-child(4) .value { color: #f7c6d0; }
+  .change.up { color: #4ade80; }
+  .change.down { color: #f87171; }
+  .change.neutral { color: #666; }
+
+  /* Main Grid */
+  .main-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .panel {
+    background: #141414;
+    border: 1px solid #222;
+    border-radius: 12px;
+    padding: 20px;
+  }
+  .panel h2 {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #666;
+    margin-bottom: 16px;
+  }
+
+  /* Appointments */
+  .appointment {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid #1a1a1a;
+  }
+  .appointment:last-child { border-bottom: none; }
+  .appt-time {
+    font-size: 13px;
+    font-weight: 600;
+    color: #c9a0dc;
+    min-width: 70px;
+  }
+  .appt-details {
+    flex: 1;
+  }
+  .appt-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: #ddd;
+  }
+  .appt-service {
+    font-size: 12px;
+    color: #888;
+  }
+  .appt-price {
+    font-size: 14px;
+    font-weight: 600;
+    color: #4ade80;
+  }
+
+  /* Content Schedule */
+  .content-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid #1a1a1a;
+  }
+  .content-item:last-child { border-bottom: none; }
+  .content-platform {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    min-width: 60px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    text-align: center;
+  }
+  .platform-tiktok { background: rgba(253,214,160,0.15); color: #fdd6a0; }
+  .platform-ig { background: rgba(247,198,208,0.15); color: #f7c6d0; }
+  .platform-yt { background: rgba(248,113,113,0.15); color: #f87171; }
+  .content-desc {
+    font-size: 13px;
+    color: #bbb;
+    flex: 1;
+  }
+  .content-time {
+    font-size: 12px;
+    color: #666;
+  }
+
+  /* Tasks */
+  .task {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid #1a1a1a;
+  }
+  .task:last-child { border-bottom: none; }
+  .task-check {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #333;
+    border-radius: 4px;
+    flex-shrink: 0;
+  }
+  .task-check.done {
+    background: #4ade80;
+    border-color: #4ade80;
+  }
+  .task-text {
+    font-size: 13px;
+    color: #bbb;
+  }
+  .task-text.done {
+    text-decoration: line-through;
+    color: #555;
+  }
+  .task-priority {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 2px 6px;
+    border-radius: 3px;
+    margin-left: auto;
+  }
+  .priority-high { background: rgba(248,113,113,0.15); color: #f87171; }
+  .priority-med { background: rgba(253,214,160,0.15); color: #fdd6a0; }
+  .priority-low { background: rgba(160,220,200,0.15); color: #a0dcc8; }
+
+  /* Leads Pipeline */
+  .pipeline {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+  }
+  .pipe-stage {
+    flex: 1;
+    text-align: center;
+    padding: 12px 8px;
+    background: #1a1a1a;
+    border-radius: 8px;
+  }
+  .pipe-stage .pipe-count {
+    font-size: 24px;
+    font-weight: 700;
+  }
+  .pipe-stage .pipe-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #666;
+    margin-top: 4px;
+  }
+  .pipe-stage:nth-child(1) .pipe-count { color: #888; }
+  .pipe-stage:nth-child(2) .pipe-count { color: #fdd6a0; }
+  .pipe-stage:nth-child(3) .pipe-count { color: #c9a0dc; }
+  .pipe-stage:nth-child(4) .pipe-count { color: #4ade80; }
+
+  /* Bottom row */
+  .bottom-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  /* Quick Stats */
+  .quick-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .qs {
+    padding: 12px;
+    background: #1a1a1a;
+    border-radius: 8px;
+  }
+  .qs .qs-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #555;
+    margin-bottom: 4px;
+  }
+  .qs .qs-value {
+    font-size: 18px;
+    font-weight: 700;
+    color: #ddd;
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    color: #555;
+  }
+  .empty-state .emoji {
+    font-size: 36px;
+    margin-bottom: 12px;
+  }
+  .empty-state p {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .empty-state .hint {
+    font-size: 12px;
+    color: #444;
+    margin-top: 8px;
+    font-style: italic;
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    margin-top: 32px;
+    padding-top: 16px;
+    border-top: 1px solid #1a1a1a;
+  }
+  .footer p {
+    font-size: 11px;
+    color: #333;
+    letter-spacing: 1px;
+  }
+</style>
+</head>
+<body>
+<div class="dashboard">
+
+  <!-- Header -->
+  <div class="header">
+    <h1 id="business-name">Beauty Business OS</h1>
+    <div class="date" id="current-date">Loading...</div>
+    <div class="status">
+      <span class="status-dot"></span>
+      System Active
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats">
+    <div class="stat-card">
+      <div class="label">Revenue This Week</div>
+      <div class="value" id="revenue-week">$0</div>
+      <div class="change neutral" id="revenue-change">No data yet</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">Bookings This Week</div>
+      <div class="value" id="bookings-week">0</div>
+      <div class="change neutral" id="bookings-change">No data yet</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">New Leads</div>
+      <div class="value" id="new-leads">0</div>
+      <div class="change neutral" id="leads-change">No data yet</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">Content Scheduled</div>
+      <div class="value" id="content-count">0</div>
+      <div class="change neutral">Next 7 days</div>
+    </div>
+  </div>
+
+  <!-- Main Grid -->
+  <div class="main-grid">
+
+    <!-- Today's Appointments -->
+    <div class="panel">
+      <h2>Today's Appointments</h2>
+      <div id="appointments">
+        <div class="empty-state">
+          <div class="emoji">&#128197;</div>
+          <p>No appointments loaded yet.</p>
+          <div class="hint">Say "What's on my schedule today?" to load your calendar</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Content Schedule -->
+    <div class="panel">
+      <h2>Content Schedule — Next 7 Days</h2>
+      <div id="content-schedule">
+        <div class="empty-state">
+          <div class="emoji">&#127909;</div>
+          <p>No content scheduled yet.</p>
+          <div class="hint">Say "Create this week's content" to get started</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tasks -->
+    <div class="panel">
+      <h2>Tasks & Reminders</h2>
+      <div id="tasks">
+        <div class="empty-state">
+          <div class="emoji">&#9745;</div>
+          <p>No tasks yet.</p>
+          <div class="hint">Say "What do I need to do today?" to see your priorities</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Leads Pipeline -->
+    <div class="panel">
+      <h2>Lead Pipeline</h2>
+      <div class="pipeline">
+        <div class="pipe-stage">
+          <div class="pipe-count" id="pipe-new">0</div>
+          <div class="pipe-label">New</div>
+        </div>
+        <div class="pipe-stage">
+          <div class="pipe-count" id="pipe-contacted">0</div>
+          <div class="pipe-label">Contacted</div>
+        </div>
+        <div class="pipe-stage">
+          <div class="pipe-count" id="pipe-booked">0</div>
+          <div class="pipe-label">Booked</div>
+        </div>
+        <div class="pipe-stage">
+          <div class="pipe-count" id="pipe-completed">0</div>
+          <div class="pipe-label">Completed</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom -->
+  <div class="bottom-grid">
+    <div class="panel">
+      <h2>Quick Stats</h2>
+      <div class="quick-stats">
+        <div class="qs">
+          <div class="qs-label">Booking Rate</div>
+          <div class="qs-value" id="booking-rate">—</div>
+        </div>
+        <div class="qs">
+          <div class="qs-label">Avg Service Value</div>
+          <div class="qs-value" id="avg-service">—</div>
+        </div>
+        <div class="qs">
+          <div class="qs-label">Top Service</div>
+          <div class="qs-value" id="top-service" style="font-size:14px;">—</div>
+        </div>
+        <div class="qs">
+          <div class="qs-label">Revenue This Month</div>
+          <div class="qs-value" id="revenue-month">$0</div>
+        </div>
+      </div>
+    </div>
+    <div class="panel">
+      <h2>Supply Status</h2>
+      <div id="supplies">
+        <div class="empty-state">
+          <div class="emoji">&#128230;</div>
+          <p>Supply tracking not configured.</p>
+          <div class="hint">Say "Do I need to order anything?" to check supplies</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>BEAUTY BUSINESS OS &bull; Dashboard updated by your AI business manager</p>
+  </div>
+
+</div>
+
+<script>
+  // Set current date
+  const now = new Date();
+  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+  document.getElementById('current-date').textContent = now.toLocaleDateString('en-US', options);
+
+  // The COO agent rewrites sections of this HTML during each heartbeat.
+  // Data is embedded directly — no API calls, no backend, just file writes.
+  //
+  // To update this dashboard, the COO agent:
+  // 1. Reads current dashboard state
+  // 2. Updates the relevant data sections
+  // 3. Writes the updated HTML file
+  //
+  // The user refreshes their browser to see updates, or the page auto-refreshes:
+  setTimeout(() => location.reload(), 300000); // Auto-refresh every 5 minutes
+</script>
+</body>
+</html>

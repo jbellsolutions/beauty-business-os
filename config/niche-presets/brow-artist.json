@@ -1,0 +1,22 @@
+{
+  "niche": "brow-artist",
+  "display_name": "Brow Artist",
+  "common_services": ["Brow Wax & Shape", "Brow Tint", "Brow Lamination", "Microblading", "Ombre/Powder Brows", "Combo Brows", "Henna Brows", "Brow Mapping Consultation"],
+  "avg_price_range": {"min": 20, "max": 600},
+  "content_themes": ["Before/after brow transformations", "Microblading process videos", "Brow mapping demonstrations", "Brow shape education (face shapes)", "Healing journey content (microblading)", "Brow lamination reveals", "Product reviews (brow products)", "Brow care tips between appointments"],
+  "trending_hashtags": ["#browartist", "#microblading", "#browsonfleek", "#browlamination", "#ombrebrows", "#powderbrows", "#browshaping", "#browgame", "#permanentmakeup", "#browtransformation", "#hennabrows", "#browgoals"],
+  "seasonal_promos": {
+    "valentines": "Perfect Brows for V-Day — Lamination + tint combo",
+    "mothers_day": "Gift Mom Perfect Brows — Microblading gift certificates",
+    "prom": "Prom Brow Special — Wax + tint + lamination",
+    "summer": "Summer Brow Refresh — Waterproof brows (lamination special)",
+    "halloween": "N/A",
+    "holiday": "Holiday Brow Package — Lamination + tint + take-home brow kit",
+    "new_year": "New Year New Brows — January microblading/PMU special"
+  },
+  "common_supplies": ["Brow wax (hard/soft)", "Brow tint", "Lamination solution set", "Microblading blades", "PMU pigments", "Mapping string/ruler", "Aftercare balm", "Disposable applicators", "Numbing cream (for PMU)", "Practice skins"],
+  "reorder_cadence_days": 21,
+  "ideal_posting_times": {"weekday": "6:00 PM", "weekend": "10:00 AM"},
+  "competitor_keywords": ["brow bar", "brow studio", "brow lounge", "PMU studio", "brow boutique"],
+  "client_psychology": "Brows frame the face — clients notice the difference immediately and get emotional about good brows. Before/afters are the most powerful sales tool. For PMU services (microblading, ombre), clients research extensively and need to see healed results, not just fresh work. Trust in the artist's eye for symmetry and color matching is critical. Many clients don't know what brow shape suits them — education content converts well."
+}

@@ -1,0 +1,22 @@
+{
+  "niche": "electrologist",
+  "display_name": "Electrologist",
+  "common_services": ["Electrolysis — Upper Lip (15 min)", "Electrolysis — Chin (15 min)", "Electrolysis — Face (30 min)", "Electrolysis — Bikini (30 min)", "Electrolysis — Underarms (30 min)", "Electrolysis — Full Body Area (60 min)", "Consultation + Patch Test", "Multi-Session Package (10 sessions)"],
+  "avg_price_range": {"min": 40, "max": 150},
+  "content_themes": ["Electrolysis vs laser — the truth", "What to expect at your first session", "Hair growth cycle education", "Client journey stories (full clearance)", "PCOS and hormone-related hair content", "Transgender hair removal journeys", "Pain management tips", "Why electrolysis is the ONLY FDA-approved permanent removal"],
+  "trending_hashtags": ["#electrolysis", "#permanenthairremoval", "#electrologist", "#hairremoval", "#smoothskin", "#electrolysisworks", "#pcoshairremoval", "#transgenderhairremoval", "#hairfree", "#fdaapproved", "#electrolysisjourney"],
+  "seasonal_promos": {
+    "valentines": "Smooth for Your Valentine — First session 20% off",
+    "mothers_day": "Gift Mom Smooth Skin — Gift certificate specials",
+    "prom": "N/A",
+    "summer": "Summer Smooth — Start your journey now, be hair-free by fall",
+    "halloween": "N/A",
+    "holiday": "Holiday Package — Buy 10 sessions, get 2 free",
+    "new_year": "New Year Resolution — Start your permanent hair removal journey"
+  },
+  "common_supplies": ["Sterile probes/filaments (various sizes)", "Alcohol prep pads", "Aftercare lotion/aloe", "Magnification lamp", "Disposable gloves", "Skin cleanser", "Tweezers (post-treatment)", "Sharps container", "Epilator tips", "Consent forms"],
+  "reorder_cadence_days": 21,
+  "ideal_posting_times": {"weekday": "6:00 PM", "weekend": "10:00 AM"},
+  "competitor_keywords": ["hair removal clinic", "electrolysis center", "permanent hair removal", "smooth skin studio", "electrolysis spa"],
+  "client_psychology": "Clients often come after laser hair removal failed or wasn't suitable for their skin/hair type. Many have dealt with unwanted hair for years and feel embarrassed — sensitivity and discretion are paramount. Transgender clients seeking facial hair removal are a significant and loyal market segment — creating an inclusive, welcoming environment matters enormously. Results take time (months of regular sessions) so managing expectations and celebrating progress is key. Once they're cleared, they refer everyone."
+}

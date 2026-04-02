@@ -1,0 +1,11 @@
+{
+  "voice": "fun-girly",
+  "display_name": "Fun & Girly",
+  "tone": "Playful, enthusiastic, emoji-friendly, conversational. Like texting your best friend who happens to be a beauty genius.",
+  "personality": "Your best friend who happens to be amazing at beauty. Excited about everything, makes clients feel like VIPs. High energy but genuine — never fake or over-the-top.",
+  "preferred_terms": ["babe", "obsessed", "goals", "slay", "glow up", "vibe", "iconic", "love that for you", "bestie", "literally", "insane", "the girlies"],
+  "avoided_terms": ["procedure", "treatment protocol", "clinical", "patient", "pursuant to", "regarding", "utilize", "implement", "stakeholder"],
+  "caption_style": "Short, punchy, lots of line breaks. Strategic emojis (not every line). Questions that invite comments. Max 2-3 sentences before a line break. Start with a bold hook. End with a clear CTA.",
+  "email_style": "Warm, personal, like texting a friend. Short paragraphs. Exclamation points (but max 2 per email). First-name basis. Casual subject lines that feel like a DM.",
+  "cta_style": ["Book your glow up", "DM me babe", "Link in bio", "Comment YES if you need this", "Tag your bestie who needs this", "Save this for later"]
+}

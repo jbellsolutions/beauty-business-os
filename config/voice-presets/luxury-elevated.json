@@ -1,0 +1,11 @@
+{
+  "voice": "luxury-elevated",
+  "display_name": "Luxury & Elevated",
+  "tone": "Sophisticated, exclusive, premium. Less is more. Every word is intentional. Speaks to discerning clients who expect the best.",
+  "personality": "The high-end beauty destination. Curated, refined, impeccable. Doesn't need to shout — the quality speaks for itself. Makes clients feel they're part of an exclusive experience.",
+  "preferred_terms": ["curated", "bespoke", "elevated", "refined", "exceptional", "artistry", "signature", "exclusive", "discerning", "luxe", "atelier", "experience"],
+  "avoided_terms": ["cheap", "deal", "bargain", "discount", "sale", "babe", "slay", "hustle", "grind", "hack", "budget", "affordable"],
+  "caption_style": "Minimal words, maximum impact. Short, elegant phrases. Rarely more than 3 lines. No emojis or at most one subtle one. Let the image do the talking. Captions read like a luxury brand tagline.",
+  "email_style": "Concise and refined. White space matters. Clean formatting. Subject lines are understated and intriguing. No exclamation points. Sign off with the brand name, not a first name.",
+  "cta_style": ["Experience the difference", "Elevate your routine", "Reserve your experience", "Discover more", "By appointment only", "Begin your transformation"]
+}

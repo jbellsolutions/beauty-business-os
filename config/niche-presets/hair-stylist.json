@@ -1,0 +1,22 @@
+{
+  "niche": "hair-stylist",
+  "display_name": "Hair Stylist",
+  "common_services": ["Women's Haircut", "Men's Haircut", "Single Process Color", "Highlights (partial)", "Highlights (full)", "Balayage", "Keratin Treatment", "Blowout", "Hair Extensions", "Deep Conditioning Treatment"],
+  "avg_price_range": {"min": 35, "max": 400},
+  "content_themes": ["Before/after color transformations", "Balayage technique videos", "Hair care routine education", "Trending haircut/color content", "Client reveal reactions", "Day-in-the-life behind the chair", "Product recommendations", "Hair damage repair journeys"],
+  "trending_hashtags": ["#hairstylist", "#haircolor", "#balayage", "#highlights", "#hairtransformation", "#blondehair", "#haircut", "#colorist", "#behindthechair", "#hairgoals", "#healthyhair", "#hairtok"],
+  "seasonal_promos": {
+    "valentines": "Date Night Hair — Blowout bar special",
+    "mothers_day": "Mom's Day Off — Cut + color + glass of wine",
+    "prom": "Prom Updo Special — Style + trial run package",
+    "summer": "Summer Ready — Balayage + gloss + deep condition",
+    "halloween": "N/A",
+    "holiday": "Holiday Hair — Glam blowout parties (book your group!)",
+    "new_year": "New Year Color Refresh — January color specials"
+  },
+  "common_supplies": ["Color tubes/bowls", "Developer (10/20/30/40 vol)", "Foils", "Sectioning clips", "Toner", "Deep conditioner", "Styling products", "Shears/thinning shears", "Blow dryer/diffuser", "Flat iron/curling iron"],
+  "reorder_cadence_days": 14,
+  "ideal_posting_times": {"weekday": "5:00 PM", "weekend": "10:00 AM"},
+  "competitor_keywords": ["hair salon", "hair studio", "color bar", "blow bar", "styling lounge"],
+  "client_psychology": "Clients form deep emotional bonds with their hair stylist — many stay for years or decades. Hair is identity. A bad color job or cut is visible to everyone they interact with, so trust is earned slowly. Before/after photos are everything for attracting new clients. Clients value a stylist who LISTENS to what they want vs. pushes their own vision. Education about hair health builds trust and opens doors for product sales and premium services."
+}

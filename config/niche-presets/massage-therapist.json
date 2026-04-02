@@ -1,0 +1,22 @@
+{
+  "niche": "massage-therapist",
+  "display_name": "Massage Therapist",
+  "common_services": ["Swedish Massage (60 min)", "Swedish Massage (90 min)", "Deep Tissue Massage", "Hot Stone Massage", "Prenatal Massage", "Sports Massage", "Lymphatic Drainage", "Cupping Therapy", "Couples Massage"],
+  "avg_price_range": {"min": 60, "max": 200},
+  "content_themes": ["Self-massage techniques for clients", "Benefits of different massage types", "ASMR massage content", "Stretching/mobility tips", "Stress relief and wellness content", "Behind-the-scenes room setup", "Client testimonials (pain relief stories)", "Myth-busting (deep tissue doesn't mean painful)"],
+  "trending_hashtags": ["#massagetherapist", "#massage", "#deeptissue", "#hotstonemassage", "#lymphaticdrainage", "#selfcare", "#wellness", "#bodywork", "#prenantalmassage", "#cupping", "#relaxation", "#massagetherapy"],
+  "seasonal_promos": {
+    "valentines": "Couples Massage Special — Valentine's weekend booking",
+    "mothers_day": "Mom Deserves This — 90-min relaxation package",
+    "prom": "N/A",
+    "summer": "Summer Recovery — Sports massage for active clients",
+    "halloween": "N/A",
+    "holiday": "Holiday Stress Relief — Gift certificate bundles (buy 3 get 1 free)",
+    "new_year": "New Year Wellness — Monthly massage membership launch"
+  },
+  "common_supplies": ["Massage oil/lotion", "Hot stones", "Cupping sets", "Clean sheets (bulk)", "Face cradle covers", "Essential oils", "Bolster pillows", "Table warmers", "Hand towels", "Sanitizer/cleaner"],
+  "reorder_cadence_days": 14,
+  "ideal_posting_times": {"weekday": "8:00 PM", "weekend": "9:00 AM"},
+  "competitor_keywords": ["massage studio", "wellness center", "bodywork studio", "therapeutic massage", "healing hands"],
+  "client_psychology": "Clients come for pain relief or stress management — both deeply personal motivations. They value a therapist who listens to their specific concerns and adjusts pressure accordingly. Many clients feel guilty about 'treating themselves' to massage — frame it as healthcare, not luxury. Membership models (monthly massage at a discount) create the stickiest recurring revenue. Referrals come from results — 'my neck pain is finally gone' drives more bookings than any ad."
+}

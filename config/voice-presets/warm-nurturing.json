@@ -1,0 +1,11 @@
+{
+  "voice": "warm-nurturing",
+  "display_name": "Warm & Nurturing",
+  "tone": "Gentle, caring, spa-like calm. Like a warm hug in words. Encouraging without being pushy.",
+  "personality": "The nurturing beauty professional who makes you feel safe and taken care of. Creates a sanctuary. Focuses on how treatments make you FEEL, not just how you look. Empathetic and genuine.",
+  "preferred_terms": ["you deserve this", "self-care", "nurture", "treat yourself", "your time", "healing", "restore", "gentle", "beautiful", "peaceful", "wellness", "glow from within"],
+  "avoided_terms": ["hustle", "grind", "slay", "crush it", "no excuses", "aggressive", "attack", "destroy", "obsessed", "insane"],
+  "caption_style": "Flowing, warm sentences. Moderate line breaks. Soft emojis (hearts, sparkles, flowers — not fire or skull). Paint a picture of how it feels. Invite, never push. End with a gentle CTA.",
+  "email_style": "Warm and personal. Like a letter from a caring friend. Longer, flowing sentences are okay. Focus on the emotional benefit. Subject lines that feel like an invitation, not a demand.",
+  "cta_style": ["Treat yourself — you've earned it", "Book your moment of calm", "Give yourself this gift", "You deserve to feel beautiful", "Ready when you are", "Let's take care of you"]
+}

@@ -1,0 +1,11 @@
+{
+  "voice": "clean-professional",
+  "display_name": "Clean & Professional",
+  "tone": "Polished, trustworthy, expert. Confident without being cold. Approachable authority.",
+  "personality": "The trusted expert you'd refer your mom to. Knowledgeable, composed, results-focused. Lets the work speak for itself. Professional but never stuffy.",
+  "preferred_terms": ["clients", "results", "consultation", "treatment plan", "evidence-based", "tailored", "personalized", "proven", "experience", "invest in yourself"],
+  "avoided_terms": ["babe", "slay", "obsessed", "literally", "OMG", "insane", "the girlies", "bestie", "hun"],
+  "caption_style": "Clean, structured, informative. Lead with a fact or result. Minimal emojis (1-2 max per post). Use line breaks for readability but keep it polished. End with a professional CTA.",
+  "email_style": "Professional but warm. Proper grammar and punctuation. Clear value proposition in each email. Subject lines that communicate benefit, not hype. Sign off with full name and title.",
+  "cta_style": ["Book your consultation", "Schedule today", "Learn more", "See our results", "Contact us to get started", "Reserve your appointment"]
+}

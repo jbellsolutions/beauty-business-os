@@ -1,0 +1,44 @@
+{
+  "mcpServers": {
+    "ghl": {
+      "_comment": "GoHighLevel MCP — paste your GHL API key below to enable CRM, pipeline, contacts, conversations, campaigns, and funnel management",
+      "_status": "not_configured",
+      "_setup_instructions": "1. Log into GoHighLevel → Settings → Business Profile → API Keys. 2. Copy the API key. 3. Paste it in the 'api_key' field below. 4. Restart Claude Code.",
+      "command": "",
+      "args": [],
+      "env": {
+        "GHL_API_KEY": ""
+      }
+    },
+    "google-calendar": {
+      "_comment": "Google Calendar MCP — enables appointment sync. Optional if using GHL calendar.",
+      "_status": "not_configured",
+      "_setup_instructions": "Connect via Claude Code's built-in Google Calendar MCP during setup."
+    },
+    "gmail": {
+      "_comment": "Gmail MCP — enables email management. Optional, GHL handles most email.",
+      "_status": "not_configured"
+    }
+  },
+  "integrations": {
+    "metricool": {
+      "_comment": "Metricool API for social media auto-posting. Free tier available.",
+      "_status": "not_configured",
+      "_setup_instructions": "1. Sign up at metricool.com (free). 2. Connect your Instagram and TikTok in Metricool's UI. 3. Go to Settings → API. 4. Copy your API key. 5. Paste below.",
+      "api_key": "",
+      "base_url": "https://app.metricool.com/api"
+    },
+    "replicate": {
+      "_comment": "Replicate API for AI image generation (Flux model). ~$0.003-$0.01 per image.",
+      "_status": "not_configured",
+      "_setup_instructions": "1. Sign up at replicate.com. 2. Go to Account → API Tokens. 3. Copy the token. 4. Paste below.",
+      "api_token": ""
+    },
+    "manychat": {
+      "_comment": "ManyChat for Instagram/TikTok DM automation. Free up to 1,000 contacts.",
+      "_status": "not_configured",
+      "_setup_instructions": "1. Sign up at manychat.com. 2. Connect your Instagram account. 3. Copy your API key from Settings → API. 4. Paste below.",
+      "api_key": ""
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "niche": "med-spa",
+  "display_name": "Med Spa",
+  "common_services": ["Botox/Dysport", "Dermal Fillers (lips)", "Dermal Fillers (cheeks/jawline)", "Laser Hair Removal", "IPL Photofacial", "Chemical Peel (medical grade)", "Microneedling with PRP", "IV Therapy", "Kybella"],
+  "avg_price_range": {"min": 150, "max": 800},
+  "content_themes": ["Before/after transformations", "Treatment process videos", "Injector technique content", "Myth-busting (Botox, fillers)", "Price transparency content", "Day-in-the-life at the med spa", "Patient education (what to expect)", "Trend spotlights (lip flip, baby Botox)"],
+  "trending_hashtags": ["#medspa", "#botox", "#fillers", "#lipfiller", "#laserhairremoval", "#antiaging", "#injectables", "#aesthetics", "#prp", "#medicalspa", "#skinrejuvenation", "#medspatok"],
+  "seasonal_promos": {
+    "valentines": "Lips for Your Love — Valentine's filler event",
+    "mothers_day": "Mom's Glow Up — Botox + facial package",
+    "prom": "Prom Ready — Laser hair removal student special",
+    "summer": "Summer Smooth — Laser hair removal package (start now)",
+    "halloween": "Boo-tox Event — Group Botox party pricing",
+    "holiday": "Holiday Glow — Gift card specials + injectable events",
+    "new_year": "New Year New You — January injectable event pricing"
+  },
+  "common_supplies": ["Botox/neurotoxin vials", "Filler syringes", "Topical numbing cream", "Cannulas", "Aftercare kits", "Alcohol prep pads", "Ice packs", "Consent forms", "Before/after photo equipment"],
+  "reorder_cadence_days": 7,
+  "ideal_posting_times": {"weekday": "12:00 PM", "weekend": "10:00 AM"},
+  "competitor_keywords": ["medical spa", "aesthetics clinic", "rejuvenation center", "skin clinic", "cosmetic clinic"],
+  "client_psychology": "Clients want to look refreshed and natural — 'no one can tell but everyone notices.' They fear looking overdone or frozen. Trust in the injector is paramount — they research extensively before booking. Price transparency builds trust (many med spas hide pricing). Before/after photos are the #1 conversion tool. Membership/loyalty programs drive retention. Many clients start with one service and gradually add more as trust builds."
+}

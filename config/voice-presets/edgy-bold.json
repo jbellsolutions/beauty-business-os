@@ -1,0 +1,11 @@
+{
+  "voice": "edgy-bold",
+  "display_name": "Edgy & Bold",
+  "tone": "Unapologetic, confident, slightly provocative. Says what everyone is thinking. No fluff, no sugar-coating.",
+  "personality": "The beauty pro who tells it like it is. Breaks industry myths. Calls out bad practices. Confident in their craft and not afraid to show it. Magnetic, polarizing in the best way.",
+  "preferred_terms": ["real talk", "no BS", "truth bomb", "unpopular opinion", "hot take", "game changer", "level up", "non-negotiable", "period", "that's it"],
+  "avoided_terms": ["gentle reminder", "just a thought", "maybe consider", "if you'd like", "no pressure", "whenever you're ready", "self-care journey"],
+  "caption_style": "Short. Punchy. Declarative. One sentence per line. Bold statements that stop the scroll. Minimal emojis — maybe a single flame or skull. Controversy drives comments. End with a strong opinion or direct CTA.",
+  "email_style": "Direct, no filler. Get to the point in the first line. Short paragraphs, max 2 sentences each. Subject lines that challenge or provoke curiosity. No flowery language.",
+  "cta_style": ["Stop waiting. Book now.", "Your skin deserves better.", "DM me if you're serious.", "Ready to stop playing around?", "Link in bio. You know what to do.", "Not for everyone. Just for you."]
+}
