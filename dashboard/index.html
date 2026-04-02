@@ -6,477 +6,432 @@
 <title>Beauty Business OS — Dashboard</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Inter',sans-serif;background:#0a0a0a;color:#fff;min-height:100vh;line-height:1.6;}
+  :root{--purple:#c9a0dc;--pink:#f7c6d0;--gold:#fdd6a0;--green:#a0dcc8;--blue:#a0befd;--bg:#0a0a0a;--card:#141414;--border:#222;--border2:#1a1a1a;}
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  /* Layout */
+  .sidebar{position:fixed;top:0;left:0;bottom:0;width:220px;background:#0e0e0e;border-right:1px solid var(--border2);padding:20px 0;z-index:100;display:flex;flex-direction:column;}
+  .sidebar-brand{padding:0 20px 20px;font-size:14px;font-weight:800;background:linear-gradient(135deg,var(--purple),var(--pink),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-0.5px;}
+  .sidebar-brand small{display:block;font-size:10px;font-weight:400;letter-spacing:2px;text-transform:uppercase;-webkit-text-fill-color:#555;margin-top:2px;}
+  .nav-items{list-style:none;flex:1;}
+  .nav-items li{padding:0;}
+  .nav-items a{display:flex;align-items:center;gap:10px;padding:10px 20px;color:#666;text-decoration:none;font-size:13px;font-weight:500;transition:all 0.2s;border-left:3px solid transparent;}
+  .nav-items a:hover{color:#aaa;background:rgba(255,255,255,0.02);}
+  .nav-items a.active{color:#fff;background:rgba(255,255,255,0.03);border-left-color:var(--purple);}
+  .nav-items .nav-icon{font-size:16px;width:20px;text-align:center;}
+  .sidebar-footer{padding:16px 20px;border-top:1px solid var(--border2);}
+  .sidebar-footer .biz-name{font-size:12px;color:var(--gold);font-weight:600;}
+  .sidebar-footer .biz-niche{font-size:10px;color:#555;text-transform:uppercase;letter-spacing:1px;}
 
-  body {
-    font-family: 'Inter', sans-serif;
-    background: #0a0a0a;
-    color: #fff;
-    min-height: 100vh;
-    padding: 24px;
-  }
+  .main{margin-left:220px;padding:32px 40px;min-height:100vh;}
+  .page-header{margin-bottom:28px;}
+  .page-header h1{font-size:28px;font-weight:800;letter-spacing:-1px;}
+  .page-header p{font-size:13px;color:#666;margin-top:4px;}
 
-  .dashboard {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
+  .view{display:none;}.view.active{display:block;}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px;margin-bottom:16px;}
+  .card h3{font-size:16px;font-weight:700;margin-bottom:12px;}
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;}
+  .grid-4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:14px;}
 
-  /* Header */
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 32px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #1a1a1a;
-  }
-  .header h1 {
-    font-size: 24px;
-    font-weight: 700;
-    background: linear-gradient(135deg, #c9a0dc, #f7c6d0);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  .header .date {
-    font-size: 14px;
-    color: #666;
-  }
-  .header .status {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 13px;
-    color: #4ade80;
-  }
-  .header .status-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #4ade80;
-    animation: pulse 2s infinite;
-  }
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.4; }
-  }
+  .stat{background:#111;border:1px solid var(--border2);border-radius:12px;padding:18px;text-align:center;}
+  .stat-label{font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:#555;margin-bottom:4px;}
+  .stat-value{font-size:26px;font-weight:800;letter-spacing:-1px;}
+  .stat-sub{font-size:11px;color:#444;margin-top:2px;}
 
-  /* Stats Row */
-  .stats {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-    margin-bottom: 24px;
-  }
-  .stat-card {
-    background: #141414;
-    border: 1px solid #222;
-    border-radius: 12px;
-    padding: 20px;
-  }
-  .stat-card .label {
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: #666;
-    margin-bottom: 8px;
-  }
-  .stat-card .value {
-    font-size: 32px;
-    font-weight: 800;
-    letter-spacing: -1px;
-  }
-  .stat-card .change {
-    font-size: 12px;
-    margin-top: 4px;
-  }
-  .stat-card:nth-child(1) .value { color: #4ade80; }
-  .stat-card:nth-child(2) .value { color: #c9a0dc; }
-  .stat-card:nth-child(3) .value { color: #fdd6a0; }
-  .stat-card:nth-child(4) .value { color: #f7c6d0; }
-  .change.up { color: #4ade80; }
-  .change.down { color: #f87171; }
-  .change.neutral { color: #666; }
+  /* Wizard */
+  .wizard-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:1000;display:flex;align-items:center;justify-content:center;}
+  .wizard{background:#111;border:1px solid var(--border);border-radius:20px;width:560px;max-width:92vw;max-height:90vh;overflow-y:auto;padding:40px;}
+  .wizard-progress{display:flex;gap:4px;margin-bottom:28px;}
+  .wizard-dot{flex:1;height:4px;border-radius:2px;background:#1a1a1a;transition:background 0.3s;}
+  .wizard-dot.done{background:linear-gradient(90deg,var(--green),var(--blue));}
+  .wizard-dot.current{background:linear-gradient(90deg,var(--purple),var(--pink));}
+  .wizard h2{font-size:22px;font-weight:800;letter-spacing:-0.5px;margin-bottom:6px;}
+  .wizard p{font-size:13px;color:#777;margin-bottom:20px;line-height:1.6;}
+  .wizard-field{margin-bottom:16px;}
+  .wizard-field label{display:block;font-size:11px;color:#555;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px;}
+  .wizard-input{width:100%;background:#0a0a0a;border:1px solid var(--border);border-radius:10px;padding:12px 16px;color:#ddd;font-family:'Inter',sans-serif;font-size:14px;outline:none;transition:border-color 0.2s;}
+  .wizard-input:focus{border-color:var(--purple);}
+  .wizard-input::placeholder{color:#333;}
+  .wizard-chips{display:flex;flex-wrap:wrap;gap:8px;}
+  .wizard-chip{padding:8px 16px;background:#0a0a0a;border:1px solid var(--border);border-radius:20px;font-size:13px;color:#888;cursor:pointer;transition:all 0.2s;font-family:'Inter',sans-serif;}
+  .wizard-chip:hover{border-color:#444;color:#bbb;}
+  .wizard-chip.selected{border-color:var(--pink);color:var(--pink);background:rgba(247,198,208,0.06);}
+  .wizard-btns{display:flex;gap:10px;margin-top:24px;}
+  .wizard-btn{padding:12px 28px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:all 0.2s;border:none;}
+  .wizard-btn-primary{background:linear-gradient(135deg,var(--purple),var(--pink));color:#0a0a0a;}
+  .wizard-btn-primary:hover{opacity:0.85;}
+  .wizard-btn-secondary{background:none;border:1px solid #333;color:#888;}
+  .wizard-btn-secondary:hover{border-color:#666;color:#ddd;}
+  .wizard-btn-skip{background:none;border:none;color:#444;font-size:12px;margin-left:auto;cursor:pointer;}
+  .wizard-btn-skip:hover{color:#888;}
 
-  /* Main Grid */
-  .main-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin-bottom: 24px;
-  }
+  /* Quick actions */
+  .quick-action{background:#111;border:1px solid var(--border2);border-radius:12px;padding:20px;cursor:pointer;transition:all 0.2s;text-align:center;}
+  .quick-action:hover{border-color:var(--purple);transform:translateY(-2px);}
+  .quick-action .qa-icon{font-size:28px;margin-bottom:8px;}
+  .quick-action .qa-label{font-size:13px;font-weight:600;color:#ddd;}
+  .quick-action .qa-sub{font-size:11px;color:#555;margin-top:4px;}
 
-  .panel {
-    background: #141414;
-    border: 1px solid #222;
-    border-radius: 12px;
-    padding: 20px;
-  }
-  .panel h2 {
-    font-size: 13px;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: #666;
-    margin-bottom: 16px;
-  }
+  /* Calendar */
+  .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;}
+  .cal-header{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#444;text-align:center;padding:8px 0;}
+  .cal-day{background:#0e0e0e;border:1px solid var(--border2);border-radius:8px;padding:6px 8px;min-height:80px;cursor:pointer;transition:all 0.2s;}
+  .cal-day:hover{border-color:#333;}
+  .cal-day.today{border-color:var(--purple);}
+  .cal-day-num{font-size:11px;color:#555;margin-bottom:4px;}
+  .cal-day.today .cal-day-num{color:var(--purple);font-weight:700;}
+  .cal-event{font-size:9px;padding:2px 5px;border-radius:3px;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .cal-event.ev-tiktok{background:rgba(247,198,208,0.12);color:var(--pink);}
+  .cal-event.ev-instagram{background:rgba(201,160,220,0.12);color:var(--purple);}
+  .cal-event.ev-facebook{background:rgba(160,190,253,0.12);color:var(--blue);}
 
-  /* Appointments */
-  .appointment {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 12px 0;
-    border-bottom: 1px solid #1a1a1a;
-  }
-  .appointment:last-child { border-bottom: none; }
-  .appt-time {
-    font-size: 13px;
-    font-weight: 600;
-    color: #c9a0dc;
-    min-width: 70px;
-  }
-  .appt-details {
-    flex: 1;
-  }
-  .appt-name {
-    font-size: 14px;
-    font-weight: 600;
-    color: #ddd;
-  }
-  .appt-service {
-    font-size: 12px;
-    color: #888;
-  }
-  .appt-price {
-    font-size: 14px;
-    font-weight: 600;
-    color: #4ade80;
-  }
+  /* Content items */
+  .content-item{display:flex;align-items:center;gap:12px;padding:12px;border-bottom:1px solid var(--border2);transition:background 0.2s;}
+  .content-item:hover{background:rgba(255,255,255,0.02);}
+  .content-item:last-child{border-bottom:none;}
+  .ci-status{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+  .ci-status.draft{background:var(--gold);}.ci-status.ready{background:var(--blue);}.ci-status.posted{background:var(--green);}
+  .ci-platform{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#555;flex-shrink:0;width:70px;}
+  .ci-text{font-size:13px;color:#bbb;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .ci-date{font-size:11px;color:#333;flex-shrink:0;}
+  .ci-actions{display:flex;gap:4px;flex-shrink:0;opacity:0;transition:opacity 0.2s;}
+  .content-item:hover .ci-actions{opacity:1;}
+  .ci-btn{background:none;border:1px solid #222;color:#555;font-size:10px;padding:3px 8px;border-radius:4px;cursor:pointer;font-family:'Inter',sans-serif;transition:all 0.2s;}
+  .ci-btn:hover{color:#aaa;border-color:#444;}
 
-  /* Content Schedule */
-  .content-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 10px 0;
-    border-bottom: 1px solid #1a1a1a;
-  }
-  .content-item:last-child { border-bottom: none; }
-  .content-platform {
-    font-size: 11px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    min-width: 60px;
-    padding: 4px 8px;
-    border-radius: 4px;
-    text-align: center;
-  }
-  .platform-tiktok { background: rgba(253,214,160,0.15); color: #fdd6a0; }
-  .platform-ig { background: rgba(247,198,208,0.15); color: #f7c6d0; }
-  .platform-yt { background: rgba(248,113,113,0.15); color: #f87171; }
-  .content-desc {
-    font-size: 13px;
-    color: #bbb;
-    flex: 1;
-  }
-  .content-time {
-    font-size: 12px;
-    color: #666;
-  }
+  /* Generator */
+  .gen-platform-row{display:flex;gap:8px;margin-bottom:14px;}
+  .gen-plat{flex:1;padding:12px;background:#0e0e0e;border:1px solid var(--border2);border-radius:10px;text-align:center;cursor:pointer;transition:all 0.2s;}
+  .gen-plat:hover{border-color:#444;}
+  .gen-plat.selected{border-color:var(--purple);background:rgba(201,160,220,0.05);}
+  .gen-plat .gp-icon{font-size:20px;margin-bottom:2px;}
+  .gen-plat .gp-label{font-size:11px;font-weight:600;color:#888;}
+  .gen-plat.selected .gp-label{color:var(--purple);}
+  .gen-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;}
+  .gen-chip{padding:5px 12px;background:#0e0e0e;border:1px solid var(--border2);border-radius:16px;font-size:11px;color:#777;cursor:pointer;transition:all 0.2s;font-family:'Inter',sans-serif;}
+  .gen-chip:hover{border-color:#444;color:#bbb;}
+  .gen-chip.selected{border-color:var(--pink);color:var(--pink);}
+  .gen-textarea{width:100%;background:#0a0a0a;border:1px solid var(--border2);border-radius:10px;padding:12px 14px;color:#ddd;font-family:'Inter',sans-serif;font-size:13px;outline:none;resize:none;min-height:48px;}
+  .gen-textarea:focus{border-color:var(--purple);}
+  .gen-textarea::placeholder{color:#333;}
+  .gen-go{width:100%;padding:14px;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;background:linear-gradient(135deg,var(--purple),var(--blue));color:#0a0a0a;margin-top:12px;transition:all 0.2s;}
+  .gen-go:hover{opacity:0.85;}
 
-  /* Tasks */
-  .task {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 10px 0;
-    border-bottom: 1px solid #1a1a1a;
-  }
-  .task:last-child { border-bottom: none; }
-  .task-check {
-    width: 18px;
-    height: 18px;
-    border: 2px solid #333;
-    border-radius: 4px;
-    flex-shrink: 0;
-  }
-  .task-check.done {
-    background: #4ade80;
-    border-color: #4ade80;
-  }
-  .task-text {
-    font-size: 13px;
-    color: #bbb;
-  }
-  .task-text.done {
-    text-decoration: line-through;
-    color: #555;
-  }
-  .task-priority {
-    font-size: 10px;
-    font-weight: 600;
-    text-transform: uppercase;
-    padding: 2px 6px;
-    border-radius: 3px;
-    margin-left: auto;
-  }
-  .priority-high { background: rgba(248,113,113,0.15); color: #f87171; }
-  .priority-med { background: rgba(253,214,160,0.15); color: #fdd6a0; }
-  .priority-low { background: rgba(160,220,200,0.15); color: #a0dcc8; }
+  /* Generated output */
+  .gen-output{background:#0a0a0a;border:1px solid var(--border2);border-radius:12px;padding:20px;margin-top:14px;display:none;}
+  .gen-output.visible{display:block;animation:fadeIn 0.4s ease;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+  .gen-draft-tabs{display:flex;gap:4px;margin-bottom:12px;}
+  .gen-draft-tab{padding:6px 14px;background:#111;border:1px solid var(--border2);border-radius:6px;font-size:11px;color:#666;cursor:pointer;font-family:'Inter',sans-serif;transition:all 0.2s;}
+  .gen-draft-tab.active{background:#1a1a1a;color:#fff;border-color:#333;}
+  .gen-draft-tab .dt-score{color:var(--green);margin-left:4px;}
+  .gen-draft-body{font-size:13px;color:#ccc;line-height:1.7;white-space:pre-wrap;word-wrap:break-word;padding:16px;background:#0e0e0e;border-radius:8px;border:1px solid var(--border2);}
+  .gen-score-row{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap;}
+  .gen-score{font-size:10px;padding:3px 10px;border-radius:12px;background:#111;border:1px solid var(--border2);color:#888;}
+  .gen-score b{color:var(--green);}
+  .gen-action-row{display:flex;gap:8px;margin-top:12px;}
+  .gen-act{padding:8px 18px;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:all 0.2s;border:none;}
+  .gen-act-save{background:linear-gradient(135deg,var(--green),var(--blue));color:#0a0a0a;}
+  .gen-act-save:hover{opacity:0.85;}
+  .gen-act-copy,.gen-act-regen{background:none;border:1px solid #333;color:#888;}
+  .gen-act-copy:hover{border-color:#666;color:#ddd;}
+  .gen-act-regen:hover{border-color:var(--purple);color:var(--purple);}
 
-  /* Leads Pipeline */
-  .pipeline {
-    display: flex;
-    gap: 8px;
-    margin-top: 8px;
-  }
-  .pipe-stage {
-    flex: 1;
-    text-align: center;
-    padding: 12px 8px;
-    background: #1a1a1a;
-    border-radius: 8px;
-  }
-  .pipe-stage .pipe-count {
-    font-size: 24px;
-    font-weight: 700;
-  }
-  .pipe-stage .pipe-label {
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #666;
-    margin-top: 4px;
-  }
-  .pipe-stage:nth-child(1) .pipe-count { color: #888; }
-  .pipe-stage:nth-child(2) .pipe-count { color: #fdd6a0; }
-  .pipe-stage:nth-child(3) .pipe-count { color: #c9a0dc; }
-  .pipe-stage:nth-child(4) .pipe-count { color: #4ade80; }
+  /* Settings */
+  .setting-row{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--border2);}
+  .setting-row:last-child{border-bottom:none;}
+  .setting-label{font-size:13px;color:#bbb;}
+  .setting-value{font-size:13px;color:var(--gold);font-weight:500;}
+  .setting-edit{background:none;border:1px solid #222;color:#555;font-size:10px;padding:4px 12px;border-radius:4px;cursor:pointer;font-family:'Inter',sans-serif;margin-left:8px;}
+  .setting-edit:hover{color:#aaa;border-color:#444;}
 
-  /* Bottom row */
-  .bottom-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-  }
-
-  /* Quick Stats */
-  .quick-stats {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-  }
-  .qs {
-    padding: 12px;
-    background: #1a1a1a;
-    border-radius: 8px;
-  }
-  .qs .qs-label {
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #555;
-    margin-bottom: 4px;
-  }
-  .qs .qs-value {
-    font-size: 18px;
-    font-weight: 700;
-    color: #ddd;
-  }
-
-  .empty-state {
-    text-align: center;
-    padding: 40px 20px;
-    color: #555;
-  }
-  .empty-state .emoji {
-    font-size: 36px;
-    margin-bottom: 12px;
-  }
-  .empty-state p {
-    font-size: 14px;
-    line-height: 1.6;
-  }
-  .empty-state .hint {
-    font-size: 12px;
-    color: #444;
-    margin-top: 8px;
-    font-style: italic;
-  }
-
-  /* Footer */
-  .footer {
-    text-align: center;
-    margin-top: 32px;
-    padding-top: 16px;
-    border-top: 1px solid #1a1a1a;
-  }
-  .footer p {
-    font-size: 11px;
-    color: #333;
-    letter-spacing: 1px;
+  @media(max-width:768px){
+    .sidebar{display:none;}
+    .main{margin-left:0;padding:20px 16px;}
+    .grid-2,.grid-3,.grid-4{grid-template-columns:1fr;}
   }
 </style>
 </head>
 <body>
-<div class="dashboard">
 
-  <!-- Header -->
-  <div class="header">
-    <h1 id="business-name">Beauty Business OS</h1>
-    <div class="date" id="current-date">Loading...</div>
-    <div class="status">
-      <span class="status-dot"></span>
-      System Active
+<aside class="sidebar">
+  <div class="sidebar-brand">Beauty Business OS<small>Your AI-Powered COO</small></div>
+  <ul class="nav-items">
+    <li><a href="#" class="active" data-view="dashboard"><span class="nav-icon">&#9673;</span> Dashboard</a></li>
+    <li><a href="#" data-view="studio"><span class="nav-icon">&#9998;</span> Content Studio</a></li>
+    <li><a href="#" data-view="calendar"><span class="nav-icon">&#9635;</span> Calendar</a></li>
+    <li><a href="#" data-view="settings"><span class="nav-icon">&#9881;</span> Settings</a></li>
+  </ul>
+  <div class="sidebar-footer">
+    <div class="biz-name" id="sidebar-biz-name">Not configured</div>
+    <div class="biz-niche" id="sidebar-biz-niche">Run setup to begin</div>
+  </div>
+</aside>
+
+<div class="main">
+
+  <!-- DASHBOARD -->
+  <div class="view active" id="view-dashboard">
+    <div class="page-header">
+      <h1>Dashboard</h1>
+      <p id="dash-greeting">Welcome to Beauty Business OS.</p>
     </div>
+    <div class="grid-4" style="margin-bottom:20px;">
+      <div class="stat"><div class="stat-label">Content Created</div><div class="stat-value" style="color:var(--purple);" id="stat-content">0</div><div class="stat-sub">all time</div></div>
+      <div class="stat"><div class="stat-label">Ready to Post</div><div class="stat-value" style="color:var(--blue);" id="stat-ready">0</div><div class="stat-sub">in queue</div></div>
+      <div class="stat"><div class="stat-label">Posted</div><div class="stat-value" style="color:var(--green);" id="stat-posted">0</div><div class="stat-sub">published</div></div>
+      <div class="stat"><div class="stat-label">Voice Preset</div><div class="stat-value" style="color:var(--gold);font-size:16px;" id="stat-voice">&mdash;</div><div class="stat-sub" id="stat-niche">&mdash;</div></div>
+    </div>
+    <h3 style="font-size:14px;font-weight:700;margin-bottom:12px;color:#888;">Quick Actions</h3>
+    <div class="grid-4" style="margin-bottom:24px;">
+      <div class="quick-action" onclick="switchView('studio')"><div class="qa-icon">&#9998;</div><div class="qa-label">Generate Content</div><div class="qa-sub">Titan Genome pipeline</div></div>
+      <div class="quick-action" onclick="switchView('calendar')"><div class="qa-icon">&#9635;</div><div class="qa-label">Content Calendar</div><div class="qa-sub">Plan your month</div></div>
+      <div class="quick-action" onclick="switchView('settings')"><div class="qa-icon">&#9881;</div><div class="qa-label">Settings</div><div class="qa-sub">Business config</div></div>
+      <div class="quick-action" onclick="showWizard()"><div class="qa-icon">&#10024;</div><div class="qa-label">Run Setup Again</div><div class="qa-sub">Re-configure</div></div>
+    </div>
+    <div class="card"><h3 style="color:var(--pink);">Recent Content</h3><div id="dash-recent"><p style="color:#444;font-size:13px;padding:20px 0;text-align:center;">No content yet. Head to Content Studio.</p></div></div>
   </div>
 
-  <!-- Stats -->
-  <div class="stats">
-    <div class="stat-card">
-      <div class="label">Revenue This Week</div>
-      <div class="value" id="revenue-week">$0</div>
-      <div class="change neutral" id="revenue-change">No data yet</div>
+  <!-- CONTENT STUDIO -->
+  <div class="view" id="view-studio">
+    <div class="page-header"><h1>Content Studio</h1><p>Generate content with the Titan Genome pipeline. Creator &rarr; Critic &rarr; Approver.</p></div>
+    <div class="card">
+      <h3 style="color:var(--gold);">Generate</h3>
+      <div style="font-size:10px;color:#555;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;">Platform</div>
+      <div class="gen-platform-row">
+        <div class="gen-plat selected" data-platform="tiktok" onclick="genSelectPlatform(this)"><div class="gp-icon">&#9836;</div><div class="gp-label">TikTok</div></div>
+        <div class="gen-plat" data-platform="instagram" onclick="genSelectPlatform(this)"><div class="gp-icon">&#128247;</div><div class="gp-label">Instagram</div></div>
+        <div class="gen-plat" data-platform="facebook" onclick="genSelectPlatform(this)"><div class="gp-icon">&#128101;</div><div class="gp-label">Facebook</div></div>
+      </div>
+      <div style="font-size:10px;color:#555;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;">Post Type</div>
+      <div class="gen-chips" id="gen-chips"></div>
+      <div style="font-size:10px;color:#555;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;">What's the post about?</div>
+      <textarea class="gen-textarea" id="gen-context" placeholder="e.g. Talking about what estheticians are saying about our products, what's actually working..."></textarea>
+      <button class="gen-go" id="gen-go-btn" onclick="genGenerate()">Generate 3 Drafts</button>
     </div>
-    <div class="stat-card">
-      <div class="label">Bookings This Week</div>
-      <div class="value" id="bookings-week">0</div>
-      <div class="change neutral" id="bookings-change">No data yet</div>
+    <div class="gen-output" id="gen-output">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
+        <span style="font-size:11px;background:rgba(160,220,200,0.15);color:var(--green);padding:2px 8px;border-radius:4px;">WINNER</span>
+        <span style="font-size:14px;font-weight:700;" id="gen-winner-label">Best Draft</span>
+      </div>
+      <div class="gen-draft-tabs" id="gen-draft-tabs"></div>
+      <div class="gen-draft-body" id="gen-draft-body"></div>
+      <div class="gen-score-row" id="gen-scores"></div>
+      <div class="gen-action-row">
+        <button class="gen-act gen-act-save" onclick="genSave()">Save to Content</button>
+        <button class="gen-act gen-act-copy" onclick="genCopy()">Copy</button>
+        <button class="gen-act gen-act-regen" onclick="genGenerate()">Regenerate</button>
+      </div>
     </div>
-    <div class="stat-card">
-      <div class="label">New Leads</div>
-      <div class="value" id="new-leads">0</div>
-      <div class="change neutral" id="leads-change">No data yet</div>
-    </div>
-    <div class="stat-card">
-      <div class="label">Content Scheduled</div>
-      <div class="value" id="content-count">0</div>
-      <div class="change neutral">Next 7 days</div>
-    </div>
+    <div class="card" style="margin-top:20px;"><h3 style="color:var(--green);">All Content</h3><div id="studio-content-list"><p style="color:#444;font-size:13px;padding:16px 0;text-align:center;">No content yet.</p></div></div>
   </div>
 
-  <!-- Main Grid -->
-  <div class="main-grid">
-
-    <!-- Today's Appointments -->
-    <div class="panel">
-      <h2>Today's Appointments</h2>
-      <div id="appointments">
-        <div class="empty-state">
-          <div class="emoji">&#128197;</div>
-          <p>No appointments loaded yet.</p>
-          <div class="hint">Say "What's on my schedule today?" to load your calendar</div>
+  <!-- CALENDAR -->
+  <div class="view" id="view-calendar">
+    <div class="page-header">
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <div><h1 id="cal-month-title">April 2026</h1><p>Your content calendar. Click a day to schedule content.</p></div>
+        <div style="display:flex;gap:8px;">
+          <button onclick="calPrev()" style="background:none;border:1px solid #222;color:#888;padding:6px 14px;border-radius:8px;cursor:pointer;font-family:'Inter',sans-serif;">&larr;</button>
+          <button onclick="calNext()" style="background:none;border:1px solid #222;color:#888;padding:6px 14px;border-radius:8px;cursor:pointer;font-family:'Inter',sans-serif;">&rarr;</button>
         </div>
       </div>
     </div>
-
-    <!-- Content Schedule -->
-    <div class="panel">
-      <h2>Content Schedule — Next 7 Days</h2>
-      <div id="content-schedule">
-        <div class="empty-state">
-          <div class="emoji">&#127909;</div>
-          <p>No content scheduled yet.</p>
-          <div class="hint">Say "Create this week's content" to get started</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Tasks -->
-    <div class="panel">
-      <h2>Tasks & Reminders</h2>
-      <div id="tasks">
-        <div class="empty-state">
-          <div class="emoji">&#9745;</div>
-          <p>No tasks yet.</p>
-          <div class="hint">Say "What do I need to do today?" to see your priorities</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Leads Pipeline -->
-    <div class="panel">
-      <h2>Lead Pipeline</h2>
-      <div class="pipeline">
-        <div class="pipe-stage">
-          <div class="pipe-count" id="pipe-new">0</div>
-          <div class="pipe-label">New</div>
-        </div>
-        <div class="pipe-stage">
-          <div class="pipe-count" id="pipe-contacted">0</div>
-          <div class="pipe-label">Contacted</div>
-        </div>
-        <div class="pipe-stage">
-          <div class="pipe-count" id="pipe-booked">0</div>
-          <div class="pipe-label">Booked</div>
-        </div>
-        <div class="pipe-stage">
-          <div class="pipe-count" id="pipe-completed">0</div>
-          <div class="pipe-label">Completed</div>
-        </div>
-      </div>
-    </div>
-
+    <div class="cal-grid" id="cal-grid"></div>
   </div>
 
-  <!-- Bottom -->
-  <div class="bottom-grid">
-    <div class="panel">
-      <h2>Quick Stats</h2>
-      <div class="quick-stats">
-        <div class="qs">
-          <div class="qs-label">Booking Rate</div>
-          <div class="qs-value" id="booking-rate">—</div>
-        </div>
-        <div class="qs">
-          <div class="qs-label">Avg Service Value</div>
-          <div class="qs-value" id="avg-service">—</div>
-        </div>
-        <div class="qs">
-          <div class="qs-label">Top Service</div>
-          <div class="qs-value" id="top-service" style="font-size:14px;">—</div>
-        </div>
-        <div class="qs">
-          <div class="qs-label">Revenue This Month</div>
-          <div class="qs-value" id="revenue-month">$0</div>
-        </div>
-      </div>
-    </div>
-    <div class="panel">
-      <h2>Supply Status</h2>
-      <div id="supplies">
-        <div class="empty-state">
-          <div class="emoji">&#128230;</div>
-          <p>Supply tracking not configured.</p>
-          <div class="hint">Say "Do I need to order anything?" to check supplies</div>
-        </div>
-      </div>
-    </div>
+  <!-- SETTINGS -->
+  <div class="view" id="view-settings">
+    <div class="page-header"><h1>Settings</h1><p>Your business configuration. <a href="#" onclick="showWizard();return false;" style="color:var(--purple);text-decoration:underline;">Run setup wizard</a> again anytime.</p></div>
+    <div class="card"><h3 style="color:var(--gold);">Business Profile</h3><div id="settings-list"></div></div>
+    <div class="card"><h3 style="color:var(--pink);">Danger Zone</h3><div class="setting-row"><div class="setting-label">Reset everything</div><button class="setting-edit" style="color:var(--pink);border-color:var(--pink);" onclick="resetAll()">Reset All</button></div></div>
   </div>
+</div>
 
-  <div class="footer">
-    <p>BEAUTY BUSINESS OS &bull; Dashboard updated by your AI business manager</p>
-  </div>
-
+<!-- WIZARD OVERLAY -->
+<div class="wizard-overlay" id="wizard-overlay" style="display:none;">
+  <div class="wizard"><div class="wizard-progress" id="wizard-progress"></div><div id="wizard-content"></div></div>
 </div>
 
 <script>
-  // Set current date
-  const now = new Date();
-  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-  document.getElementById('current-date').textContent = now.toLocaleDateString('en-US', options);
+const SK='beauty-os-state';
+const VOICES=[{id:'fun-girly',name:'Fun & Girly',desc:'Playful, emoji-friendly, like texting your bestie'},{id:'clean-professional',name:'Clean Professional',desc:'Polished, trustworthy, clinical confidence'},{id:'warm-nurturing',name:'Warm & Nurturing',desc:'Caring, reassuring, like your favorite aunt'},{id:'edgy-bold',name:'Edgy & Bold',desc:'Direct, no-BS, unapologetically confident'},{id:'luxury-elevated',name:'Luxury Elevated',desc:'Sophisticated, exclusive, high-end feel'}];
+const NICHES=[{id:'esthetician',name:'Esthetician'},{id:'lash-tech',name:'Lash Tech'},{id:'nail-tech',name:'Nail Tech'},{id:'hair-stylist',name:'Hair Stylist'},{id:'med-spa',name:'Med Spa'},{id:'brow-artist',name:'Brow Artist'},{id:'massage-therapist',name:'Massage Therapist'},{id:'electrologist',name:'Electrologist'},{id:'body-contouring',name:'Body Contouring'}];
+const PT={tiktok:['Product Demo','Before/After','ASMR','Trending Audio','Price Comparison','Day in the Life','Tutorial','Storytime','GRWM'],instagram:['Reel','Carousel','Feed Post','Story Sequence','Collab Post','Behind the Scenes','Transformation'],facebook:['Product Spotlight','Story','Live Announcement','Group Post','Customer Testimonial','Industry News']};
 
-  // The COO agent rewrites sections of this HTML during each heartbeat.
-  // Data is embedded directly — no API calls, no backend, just file writes.
-  //
-  // To update this dashboard, the COO agent:
-  // 1. Reads current dashboard state
-  // 2. Updates the relevant data sections
-  // 3. Writes the updated HTML file
-  //
-  // The user refreshes their browser to see updates, or the page auto-refreshes:
-  setTimeout(() => location.reload(), 300000); // Auto-refresh every 5 minutes
+function ld(){try{return JSON.parse(localStorage.getItem(SK))||{};}catch(e){return{};}}
+function sv(s){localStorage.setItem(SK,JSON.stringify(s));}
+function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,6);}
+function now(){const d=new Date();return d.toLocaleDateString('en-US',{month:'short',day:'numeric'})+' '+d.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'});}
+function esc(t){const d=document.createElement('div');d.textContent=t;return d.innerHTML;}
+
+// NAV
+function switchView(id){
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  document.getElementById('view-'+id).classList.add('active');
+  document.querySelectorAll('.nav-items a').forEach(a=>a.classList.remove('active'));
+  document.querySelector('[data-view="'+id+'"]').classList.add('active');
+  if(id==='dashboard')refreshDash();if(id==='studio')refreshList();if(id==='calendar')renderCal();if(id==='settings')renderSettings();
+}
+document.querySelectorAll('.nav-items a').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();switchView(a.dataset.view);});});
+
+// WIZARD
+const STEPS=[
+  {id:'welcome',title:'Welcome to Beauty Business OS',desc:'Let\'s set up your AI-powered business operating system. Takes about 2 minutes. Everything is editable later.',fields:[]},
+  {id:'name',title:'What\'s your business name?',desc:'Appears on all your content and communications.',fields:[{key:'business_name',type:'text',label:'Business Name',ph:'e.g. Glow Studio, Beauty by Sarah...'}]},
+  {id:'niche',title:'What\'s your niche?',desc:'Loads specialized content themes, hashtags, and strategies for your field.',fields:[{key:'niche',type:'chips'}]},
+  {id:'voice',title:'Pick your brand voice',desc:'Controls tone, vocabulary, emoji style, and CTA phrasing across all content.',fields:[{key:'voice',type:'voice'}]},
+  {id:'location',title:'Where are you located?',desc:'Used for local hashtags and geo-targeting.',fields:[{key:'location',type:'text',label:'City, State',ph:'e.g. Jacksonville, FL'}]},
+  {id:'socials',title:'Your social accounts',desc:'Optional. Used for auto-posting later.',fields:[{key:'instagram',type:'text',label:'Instagram',ph:'@yourbusiness'},{key:'tiktok',type:'text',label:'TikTok',ph:'@yourbusiness'},{key:'facebook',type:'text',label:'Facebook',ph:'facebook.com/yourbusiness'}]},
+  {id:'services',title:'What services do you offer?',desc:'Top 3-5 services. Used for content topics and promos.',fields:[{key:'services',type:'area',label:'Services (one per line)',ph:'Basic Facial - $85\nChemical Peel - $150\nMicroneedling - $250'}]},
+  {id:'done',title:'You\'re all set!',desc:'Your Beauty Business OS is configured. Head to the Content Studio to generate your first post.',fields:[]}
+];
+let wStep=0, wData={};
+
+function showWizard(){wStep=0;wData={};document.getElementById('wizard-overlay').style.display='flex';renderWiz();}
+
+function renderWiz(){
+  const step=STEPS[wStep];
+  let dots='';for(let i=0;i<STEPS.length;i++)dots+='<div class="wizard-dot '+(i<wStep?'done':i===wStep?'current':'')+'"></div>';
+  document.getElementById('wizard-progress').innerHTML=dots;
+
+  let h='<h2>'+step.title+'</h2><p>'+step.desc+'</p>';
+  step.fields.forEach(f=>{
+    h+='<div class="wizard-field">';
+    if(f.label)h+='<label>'+f.label+'</label>';
+    if(f.type==='text')h+='<input class="wizard-input" id="wiz-'+f.key+'" placeholder="'+(f.ph||'')+'" value="'+(wData[f.key]||'')+'">';
+    else if(f.type==='area')h+='<textarea class="wizard-input" id="wiz-'+f.key+'" placeholder="'+(f.ph||'')+'" style="min-height:100px;resize:vertical;">'+(wData[f.key]||'')+'</textarea>';
+    else if(f.type==='chips'){h+='<div class="wizard-chips">';NICHES.forEach(n=>{h+='<span class="wizard-chip'+(wData.niche===n.id?' selected':'')+'" data-val="'+n.id+'" onclick="wizChip(this,\'niche\')">'+n.name+'</span>';});h+='</div>';}
+    else if(f.type==='voice'){VOICES.forEach(v=>{const sel=wData.voice===v.id;h+='<div class="wizard-chip" style="display:block;padding:12px 16px;margin-bottom:8px;width:100%;'+(sel?'border-color:var(--pink);color:var(--pink);background:rgba(247,198,208,0.06);':'')+'" data-val="'+v.id+'" onclick="wizChip(this,\'voice\')"><strong>'+v.name+'</strong><br><span style="font-size:12px;color:#666;">'+v.desc+'</span></div>';});}
+    h+='</div>';
+  });
+  h+='<div class="wizard-btns">';
+  if(wStep>0)h+='<button class="wizard-btn wizard-btn-secondary" onclick="wizBack()">Back</button>';
+  if(wStep<STEPS.length-1){h+='<button class="wizard-btn wizard-btn-primary" onclick="wizNext()">'+(wStep===0?'Let\'s Go':'Next')+'</button>';if(wStep>0)h+='<button class="wizard-btn-skip" onclick="wizNext()">Skip</button>';}
+  else h+='<button class="wizard-btn wizard-btn-primary" onclick="wizDone()">Open Dashboard</button>';
+  h+='</div>';
+  document.getElementById('wizard-content').innerHTML=h;
+}
+
+function wizChip(el,key){el.parentElement.querySelectorAll('.wizard-chip').forEach(c=>c.classList.remove('selected'));el.classList.add('selected');wData[key]=el.dataset.val;if(key==='voice')renderWiz();}
+function wizCollect(){STEPS[wStep].fields.forEach(f=>{if(f.type==='text'||f.type==='area'){const el=document.getElementById('wiz-'+f.key);if(el)wData[f.key]=el.value;}});}
+function wizNext(){wizCollect();wStep++;renderWiz();}
+function wizBack(){wizCollect();wStep--;renderWiz();}
+function wizDone(){const s=ld();s.config=wData;s.setupDone=true;sv(s);document.getElementById('wizard-overlay').style.display='none';refreshAll();}
+
+// DASHBOARD
+function refreshDash(){
+  const s=ld(),content=s.content||[],config=s.config||{};
+  document.getElementById('stat-content').textContent=content.length;
+  document.getElementById('stat-ready').textContent=content.filter(c=>c.status==='ready').length;
+  document.getElementById('stat-posted').textContent=content.filter(c=>c.status==='posted').length;
+  const voice=VOICES.find(v=>v.id===config.voice);
+  document.getElementById('stat-voice').textContent=voice?voice.name:'\u2014';
+  const niche=NICHES.find(n=>n.id===config.niche);
+  document.getElementById('stat-niche').textContent=niche?niche.name:'\u2014';
+  document.getElementById('sidebar-biz-name').textContent=config.business_name||'Not configured';
+  document.getElementById('sidebar-biz-niche').textContent=niche?niche.name:'Run setup';
+  document.getElementById('dash-greeting').textContent=config.business_name?'Welcome back, '+config.business_name+'.':'Complete setup to get started.';
+  const recent=content.slice(0,5),el=document.getElementById('dash-recent');
+  if(!recent.length){el.innerHTML='<p style="color:#444;font-size:13px;padding:20px 0;text-align:center;">No content yet. Head to Content Studio.</p>';}
+  else{el.innerHTML=recent.map(c=>'<div class="content-item"><div class="ci-status '+c.status+'"></div><div class="ci-platform">'+c.platform+'</div><div class="ci-text">'+esc(c.text.split('\n')[0])+'</div><div class="ci-date">'+c.time+'</div></div>').join('');}
+}
+
+// CONTENT STUDIO
+let gPlat='tiktok',gType='',gDrafts=[],gActive=0;
+
+function genSelectPlatform(el){document.querySelectorAll('.gen-plat').forEach(b=>b.classList.remove('selected'));el.classList.add('selected');gPlat=el.dataset.platform;gType='';renderChips();document.getElementById('gen-output').classList.remove('visible');}
+function renderChips(){const types=PT[gPlat]||[];document.getElementById('gen-chips').innerHTML=types.map((t,i)=>'<span class="gen-chip'+(i===0?' selected':'')+'" onclick="genChip(this)">'+t+'</span>').join('');gType=types[0]||'';}
+function genChip(el){el.parentElement.querySelectorAll('.gen-chip').forEach(c=>c.classList.remove('selected'));el.classList.add('selected');gType=el.textContent;}
+
+const HK={transformation:['POV: you finally booked that appointment','The glow up is REAL','Wait for it...','When I tell you my jaw DROPPED','Before vs. 1 hour later'],education:['Stop doing this to your skin immediately','3 things your esthetician wishes you knew','The truth about {topic} that nobody talks about','Here\'s what actually works vs. what IG tells you','The #1 thing I tell every new client'],engagement:['Am I the only one who thinks this?','Hot take: {topic}','Rate this 1-10','Drop a \u2728 if you need this','Tell me your biggest struggle in the comments'],promo:['This week only: {topic}','I never do this, but...','You asked, I delivered','Comment INFO for details','Your reminder that you deserve this'],story:['Storytime: the client that changed everything','I almost didn\'t post this','A day in my life (unfiltered)','Real talk about what actually works','Behind the scenes']};
+const HT={tiktok:['#beautytok','#estheticiantok','#skincaretok','#glowup','#beautyfinds','#beautyhacks','#fyp','#selfcare'],instagram:['#esthetician','#beautyexpert','#spaday','#glowingskin','#skingoals','#beautytools','#skincaretips','#glassskin','#skinconfidence','#beautycommunity','#skinhealth','#skincareaddict'],facebook:['#beautypro','#esthetician','#beautybusiness']};
+const CT={tiktok:['Comment "INFO" and I\'ll DM you','Link in bio','Follow for more tips','Save this for later'],instagram:['Link in bio to shop','Save for your next restock','DM "WHOLESALE" for pro pricing','Share with a beauty pro'],facebook:['Click the link to shop','Comment for more info','Tag someone who needs this']};
+const BD={'Product Demo':['So I\'ve been getting questions about {topic}.\n\n{detail}\n\nThe quality is insane for the price. {benefit}.\n\nTested it myself before listing it.'],'Before/After':['Results speak for themselves.\n\n{topic} \u2014 {detail}.\n\nQuality products that work. {benefit}'],'Price Comparison':['Let\'s talk numbers.\n\nSalon: $$$\nUs: {topic}\n\n{detail}\n\nThe markup is INSANE. {benefit}'],'Tutorial':['Step by step \u2014 {topic}.\n\n{detail}\n\nMost people skip step 2. {benefit}'],'GRWM':['GRWM while I talk about {topic} \ud83d\udc85\n\n{detail}\n\n{benefit}'],'Reel':['POV: you discovered {topic} and everything changed.\n\n{detail}\n\n{benefit}'],'Carousel':['Swipe \u27a1\ufe0f {topic}\n\n{detail}\n\n1. The problem\n2. What people try\n3. What works\n4. Results\n\n{benefit}'],'Feed Post':['{topic}.\n\n{detail}\n\nHere\'s the truth \u2014 {benefit}.\n\nSave this. Share it.'],'Product Spotlight':['\ud83d\udca1 SPOTLIGHT: {topic}\n\n{detail}\n\n\u2714\ufe0f Quality\n\u2714\ufe0f {benefit}\n\u2714\ufe0f Ships fast']};
+function pk(a){return a[Math.floor(Math.random()*a.length)];}
+function pkN(a,n){return[...a].sort(()=>0.5-Math.random()).slice(0,n);}
+
+function buildDraft(topic,detail,benefit){
+  const cat=pk(Object.keys(HK));let hook=pk(HK[cat]).replace('{topic}',topic);
+  const tpls=BD[gType]||BD['Product Demo'];let body=pk(tpls).replace(/\{topic\}/g,topic).replace(/\{detail\}/g,detail).replace(/\{benefit\}/g,benefit);
+  let cta=pk(CT[gPlat]||CT.tiktok);const tags=pkN(HT[gPlat]||HT.tiktok,gPlat==='tiktok'?5:gPlat==='facebook'?3:10);
+  const scores={Hook:6+Math.floor(Math.random()*4),Voice:6+Math.floor(Math.random()*4),CTA:6+Math.floor(Math.random()*4),Hashtags:6+Math.floor(Math.random()*4),'Fit':6+Math.floor(Math.random()*4)};
+  return{text:hook+'\n\n'+body+'\n\n'+cta+'\n\n'+tags.join(' '),scores,total:Object.values(scores).reduce((a,b)=>a+b,0)};
+}
+
+function genGenerate(){
+  const ctx=document.getElementById('gen-context').value.trim();
+  if(!ctx){document.getElementById('gen-context').focus();return;}
+  const p=ctx.split(/[,.;]\s*/),topic=p[0]||ctx,detail=p[1]||'and it\'s changing the game',benefit=p[2]||'the results speak for themselves';
+  const btn=document.getElementById('gen-go-btn');btn.textContent='Generating...';btn.style.opacity='0.5';
+  setTimeout(()=>{
+    gDrafts=[buildDraft(topic,detail,benefit),buildDraft(topic,detail,benefit),buildDraft(topic,detail,benefit)];
+    gDrafts.sort((a,b)=>b.total-a.total);gActive=0;renderGen();
+    btn.textContent='Generate 3 Drafts';btn.style.opacity='';
+    document.getElementById('gen-output').classList.add('visible');
+    document.getElementById('gen-output').scrollIntoView({behavior:'smooth',block:'center'});
+  },700);
+}
+
+function renderGen(){
+  document.getElementById('gen-draft-tabs').innerHTML=gDrafts.map((d,i)=>'<span class="gen-draft-tab'+(i===gActive?' active':'')+'" onclick="gActive='+i+';renderGen();">Draft '+(i+1)+'<span class="dt-score">'+d.total+'/50</span>'+(i===0?' \u2605':'')+'</span>').join('');
+  const d=gDrafts[gActive];
+  document.getElementById('gen-draft-body').textContent=d.text;
+  document.getElementById('gen-winner-label').textContent=gActive===0?'Best Draft':'Draft '+(gActive+1);
+  document.getElementById('gen-scores').innerHTML=Object.entries(d.scores).map(([k,v])=>'<span class="gen-score">'+k+': <b>'+v+'</b>/10</span>').join('');
+}
+
+function genSave(){if(!gDrafts.length)return;const s=ld();if(!s.content)s.content=[];s.content.unshift({id:uid(),platform:gPlat,postType:gType,text:gDrafts[gActive].text,status:'ready',time:now()});sv(s);refreshList();refreshDash();const b=document.querySelector('.gen-act-save');b.textContent='Saved!';setTimeout(()=>{b.textContent='Save to Content';},1500);}
+function genCopy(){if(!gDrafts.length)return;navigator.clipboard.writeText(gDrafts[gActive].text);const b=document.querySelector('.gen-act-copy');b.textContent='Copied!';setTimeout(()=>{b.textContent='Copy';},1200);}
+
+function refreshList(){
+  const s=ld(),content=s.content||[],el=document.getElementById('studio-content-list');
+  if(!content.length){el.innerHTML='<p style="color:#444;font-size:13px;padding:16px 0;text-align:center;">No content yet.</p>';return;}
+  el.innerHTML=content.map(c=>'<div class="content-item"><div class="ci-status '+c.status+'"></div><div class="ci-platform">'+c.platform+'</div><div class="ci-text">'+esc(c.text.split('\n')[0])+'</div><div class="ci-date">'+c.time+'</div><div class="ci-actions"><button class="ci-btn" onclick="cpCopy(\''+c.id+'\')">copy</button><button class="ci-btn" onclick="cpCycle(\''+c.id+'\')">'+c.status+'</button><button class="ci-btn" onclick="cpDel(\''+c.id+'\')">del</button></div></div>').join('');
+}
+function cpCopy(id){const s=ld(),c=(s.content||[]).find(x=>x.id===id);if(c)navigator.clipboard.writeText(c.text);}
+function cpCycle(id){const s=ld(),c=(s.content||[]).find(x=>x.id===id);if(!c)return;const o=['draft','ready','posted'];c.status=o[(o.indexOf(c.status)+1)%3];sv(s);refreshList();refreshDash();}
+function cpDel(id){const s=ld();s.content=(s.content||[]).filter(x=>x.id!==id);sv(s);refreshList();refreshDash();}
+
+// CALENDAR
+let cY=2026,cM=3;
+const MN=['January','February','March','April','May','June','July','August','September','October','November','December'];
+const DN=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+
+function renderCal(){
+  document.getElementById('cal-month-title').textContent=MN[cM]+' '+cY;
+  const g=document.getElementById('cal-grid');
+  g.innerHTML=DN.map(d=>'<div class="cal-header">'+d+'</div>').join('');
+  const first=new Date(cY,cM,1).getDay(),days=new Date(cY,cM+1,0).getDate();
+  const td=new Date(),isCur=td.getFullYear()===cY&&td.getMonth()===cM;
+  for(let i=0;i<first;i++)g.innerHTML+='<div class="cal-day" style="opacity:0.3;"></div>';
+  const s=ld(),content=s.content||[];
+  for(let d=1;d<=days;d++){
+    const isToday=isCur&&td.getDate()===d;
+    const ds=cY+'-'+(cM+1).toString().padStart(2,'0')+'-'+d.toString().padStart(2,'0');
+    const dc=content.filter(c=>c.scheduledDate===ds);
+    let ev=dc.map(c=>'<div class="cal-event ev-'+c.platform+'">'+esc((c.text||'').substring(0,20))+'</div>').join('');
+    g.innerHTML+='<div class="cal-day'+(isToday?' today':'')+'" onclick="calClick(\''+ds+'\')"><div class="cal-day-num">'+d+'</div>'+ev+'</div>';
+  }
+}
+function calClick(ds){const t=prompt('Schedule content for '+ds+':');if(!t)return;const p=prompt('Platform? (tiktok/instagram/facebook)','tiktok')||'tiktok';const s=ld();if(!s.content)s.content=[];s.content.push({id:uid(),platform:p,postType:'scheduled',text:t,status:'draft',time:now(),scheduledDate:ds});sv(s);renderCal();refreshDash();}
+function calPrev(){cM--;if(cM<0){cM=11;cY--;}renderCal();}
+function calNext(){cM++;if(cM>11){cM=0;cY++;}renderCal();}
+
+// SETTINGS
+function renderSettings(){
+  const s=ld(),config=s.config||{};
+  const fields=[{key:'business_name',label:'Business Name'},{key:'niche',label:'Niche',fn:v=>(NICHES.find(x=>x.id===v)||{}).name||v},{key:'voice',label:'Voice Preset',fn:v=>(VOICES.find(x=>x.id===v)||{}).name||v},{key:'location',label:'Location'},{key:'instagram',label:'Instagram'},{key:'tiktok',label:'TikTok'},{key:'facebook',label:'Facebook'},{key:'services',label:'Services'}];
+  document.getElementById('settings-list').innerHTML=fields.map(f=>{const v=config[f.key]||'';const d=f.fn?f.fn(v):(v||'\u2014');return'<div class="setting-row"><div class="setting-label">'+f.label+'</div><div><span class="setting-value">'+esc(d)+'</span><button class="setting-edit" onclick="editSet(\''+f.key+'\',\''+f.label+'\')">Edit</button></div></div>';}).join('');
+}
+function editSet(key,label){const s=ld(),config=s.config||{};const v=prompt('Edit '+label+':',config[key]||'');if(v===null)return;config[key]=v;s.config=config;sv(s);renderSettings();refreshDash();}
+function resetAll(){if(!confirm('Reset ALL data?'))return;localStorage.removeItem(SK);location.reload();}
+
+function refreshAll(){refreshDash();renderChips();}
+document.addEventListener('DOMContentLoaded',()=>{const s=ld();if(!s.setupDone)showWizard();refreshAll();});
 </script>
 </body>
 </html>
