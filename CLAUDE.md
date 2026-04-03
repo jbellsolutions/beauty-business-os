@@ -381,4 +381,27 @@ When the user doesn't know what to ask, suggest these:
 
 ---
 
+## Session Start
+
+At the beginning of each session, quickly check:
+1. Read `CLIENT_CONFIG.md` — is the user set up?
+2. If set up: greet them by name, give a quick status, ask what they need
+3. If not set up: offer to run the Setup Wizard
+
+## Key Files Reference
+
+| File | Purpose |
+|------|---------|
+| `CLAUDE.md` | This file — master instructions |
+| `CLIENT_CONFIG.md` | User's business profile |
+| `AGENTS.md` | Agent roster and handoff protocols |
+| `ARCHITECTURE.md` | System structure and data flow |
+| `ETHOS.md` | Project values and quality bar |
+| `POSITIONING.md` | Founder story and sales messaging |
+| `WALKTHROUGH.md` | User onboarding guide |
+| `dashboard/index.html` | Visual dashboard |
+| `docs/` | Getting started, FAQ, troubleshooting |
+
+---
+
 *Beauty Business OS — Because running a beauty business should feel as good as the results you create.*

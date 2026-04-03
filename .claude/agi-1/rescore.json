@@ -1,0 +1,13 @@
+{
+  "baseline": {"gstack": 75, "ai_readiness": 55, "self_healing": 0, "total": 130},
+  "rescore": {"gstack": 95, "ai_readiness": 92, "self_healing": 38, "total": 225},
+  "delta": {"gstack": 20, "ai_readiness": 37, "self_healing": 38, "total": 95},
+  "regression": false,
+  "timestamp": "2026-04-03T01:30:00Z",
+  "notes": {
+    "gstack_gains": "Added ETHOS.md (+5), ARCHITECTURE.md (+5), CHANGELOG.md (+3), VERSION (+2), AGENTS.md (+3), llms.txt (+2). Total from 75→95.",
+    "ai_readiness_gains": "Added WALKTHROUGH.md (+8), .claude/settings.json (+5), .claude/MEMORY.md + typed memory (+5), .agent/identity.json (+5), .claude/agents/ (+3), CLAUDE.md session start section (+3), .claude/GENOME.md (+3), llms.txt (+5). Total from 55→92.",
+    "healing_learning_gains": "Added .claude/healing/patterns.json with 6 patterns (+15), .claude/learning/observations.json (+8), .claude/learning/dream-log.json (+5), .claude/checkpoints/ (+5), genome integration (+5). Total from 0→38.",
+    "remaining_gaps": "No test suite (content repo, -5 gstack), no CI/CD (-3 ai_readiness), no auto-observation hooks deployed (-5 healing), genome patterns not yet promoted (-7 healing)"
+  }
+}

@@ -1,0 +1,28 @@
+# Beauty Business OS
+
+> AI-powered business operating system for beauty professionals. Talk to it. It runs your business.
+
+## What This Is
+
+A Claude Code project that acts as an AI business partner for beauty professionals. Users say "set me up," answer 10-15 questions about their business, and get a fully configured system that handles content creation, marketing, client follow-ups, scheduling, revenue tracking, and reporting — all through conversation.
+
+## Key Files
+
+- `CLAUDE.md` — Master AI instructions. Governs all behavior, setup wizard, and agent routing.
+- `CLIENT_CONFIG.md` — Per-user business profile. Populated during setup.
+- `agents/` — Four specialized agents: COO (operations), Content Creator (social/email/blog), GHL Assistant (CRM), Image Generator (graphics).
+- `config/niche-presets/` — Industry knowledge for 11 beauty niches.
+- `config/voice-presets/` — Brand personality options (5 presets).
+- `dashboard/index.html` — Visual business dashboard (single-file HTML, localStorage).
+- `playbooks/` — Strategy playbooks for organic marketing, auto-posting, client ops.
+- `funnels/` — Client-facing sales funnels (booking, lead capture, referral).
+- `templates/` — Content and business templates.
+- `heartbeats/` — Scheduled AI check-in templates.
+
+## How It Works
+
+The user opens this folder in Claude Code and talks to it. Claude reads CLAUDE.md for instructions, CLIENT_CONFIG.md for business context, selects the appropriate agent, applies the niche preset and voice preset, and generates responses/content/actions specific to that beauty professional's business.
+
+## Not a Code Repo
+
+This is a product repo — primarily markdown files, JSON presets, and one HTML dashboard. There is no backend server, no API, no build step. The "runtime" is Claude Code itself.

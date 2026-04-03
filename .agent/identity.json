@@ -1,0 +1,29 @@
+{
+  "project_name": "beauty-business-os",
+  "description": "AI-powered business operating system for beauty professionals. Users talk to it conversationally to manage content, marketing, follow-ups, scheduling, and reporting.",
+  "language": "markdown",
+  "framework": "claude-code",
+  "key_components": [
+    "CLAUDE.md — Master AI instructions and setup wizard",
+    "CLIENT_CONFIG.md — Per-user business profile",
+    "agents/ — COO, Content Creator, GHL Assistant, Image Generator",
+    "config/niche-presets/ — 11 beauty industry niche knowledge files",
+    "config/voice-presets/ — 5 brand personality options",
+    "dashboard/index.html — Single-file HTML dashboard",
+    "playbooks/ — Marketing, posting, client ops strategies",
+    "funnels/ — Booking, lead capture, referral funnels",
+    "heartbeats/ — Scheduled AI check-in templates"
+  ],
+  "entry_points": [
+    "CLAUDE.md — Read by Claude Code on session start",
+    "dashboard/index.html — Open in browser for visual dashboard"
+  ],
+  "fragile_areas": [
+    "CLIENT_CONFIG.md — Must be populated during setup; empty config breaks all agents",
+    "config/voice-presets/ — Missing or malformed preset breaks content generation",
+    "dashboard/index.html — localStorage key 'beauty-os-state' must be consistent"
+  ],
+  "repo_path": "/Users/home/Desktop/beauty-business-os",
+  "agi1_version": "1.0.0",
+  "created": "2026-04-03"
+}

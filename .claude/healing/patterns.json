@@ -1,0 +1,50 @@
+[
+  {
+    "id": "missing-client-config",
+    "description": "Agent run fails because client config doesn't exist",
+    "trigger": "Client config not found",
+    "fix": "Run the setup wizard: say 'set me up' to populate CLIENT_CONFIG.md",
+    "confidence": 1.0,
+    "source": "genome"
+  },
+  {
+    "id": "placeholder-in-delivery",
+    "description": "Template placeholder {{ not replaced in client deliverable",
+    "trigger": "{{ found in outputs/ directory",
+    "fix": "Check CLIENT_CONFIG.md — a field is likely empty. Re-run setup or manually populate the missing field.",
+    "confidence": 0.9,
+    "source": "genome"
+  },
+  {
+    "id": "voice-preset-not-loaded",
+    "description": "Content sounds generic because voice preset was not applied",
+    "trigger": "Generated content does not match brand voice",
+    "fix": "Check CLIENT_CONFIG.md Voice Preset field. If empty, re-run setup. If set, verify the preset file exists in config/voice-presets/.",
+    "confidence": 0.85,
+    "source": "local"
+  },
+  {
+    "id": "niche-preset-not-loaded",
+    "description": "Recommendations are generic because niche preset was not loaded",
+    "trigger": "AI gives non-industry-specific advice",
+    "fix": "Check CLIENT_CONFIG.md Niche Preset field. If empty, re-run setup.",
+    "confidence": 0.85,
+    "source": "local"
+  },
+  {
+    "id": "dashboard-blank",
+    "description": "Dashboard shows no data because localStorage was cleared",
+    "trigger": "Dashboard sections show empty/default values",
+    "fix": "Ask the user to interact with the AI first (morning briefing, revenue check) to populate state, then refresh the dashboard.",
+    "confidence": 0.8,
+    "source": "local"
+  },
+  {
+    "id": "ghl-not-connected",
+    "description": "GHL operations fail because API key not configured",
+    "trigger": "GoHighLevel operations return errors or 'not connected'",
+    "fix": "Check CLIENT_CONFIG.md — GoHighLevel should show an API key. If 'not connected', re-run setup or manually add the key.",
+    "confidence": 0.9,
+    "source": "local"
+  }
+]
