@@ -104,15 +104,96 @@ After all questions are answered:
 - Load the appropriate niche preset from `config/niche-presets/`
 - Load the appropriate voice preset from `config/voice-presets/`
 - Give a summary: "Here's what I know about [business]. Here's what I'm going to help you with first."
-- Immediately offer 3 quick wins based on their biggest challenge
+- Proceed to **Step 3: GHL Setup**
 
-### Step 3: Returning User Greeting
+### Step 3: GoHighLevel Auto-Configuration
+
+After collecting the user's business info, automatically set up their GoHighLevel CRM. Read `setup/ghl-setup.md` for the full workflow spec.
+
+**If GHL is already connected** (API key present in `.mcp/settings.json`):
+
+1. **Create Pipeline** — Build the business pipeline with stages appropriate to their niche:
+   - Read the niche preset for recommended pipeline stages
+   - Create the pipeline via GHL MCP
+   - Confirm: "I set up your client pipeline with [X] stages — from New Lead all the way to Retained Client."
+
+2. **Deploy Workflows** — Set up the 5 core automations from `agents/ghl-assistant/workflows/`:
+   - Lead Response (instant reply to new leads)
+   - No-Show Follow-Up (re-engagement after missed appointments)
+   - Review Request (automated review asks after service)
+   - Abandoned Booking (rescue incomplete bookings)
+   - Nurture Sequence (re-engage clients who haven't rebooked)
+   - Confirm: "I set up 5 automations that run on autopilot — lead follow-up, no-show recovery, review requests, abandoned bookings, and a nurture sequence for clients who drift."
+
+3. **Configure Tags** — Create standard tags based on their services:
+   - One tag per service (e.g., "lash-client", "facial-client")
+   - Status tags: "vip", "new", "returning", "lapsed", "no-show"
+   - Source tags based on their lead sources
+   - Confirm: "I tagged everything so your CRM is organized from day one."
+
+4. **Create Calendar** — Set up a booking calendar in GHL:
+   - Business hours based on their location timezone
+   - Service types from their service list with durations
+   - Buffer times between appointments
+   - Confirm: "Your booking calendar is live. Clients can book [services] online."
+
+**If GHL is NOT connected:**
+
+Say: "One more thing — do you use GoHighLevel for your bookings and client management? If you have a GHL account, I can set up your entire CRM automatically — pipeline, automations, booking calendar, the works. If not, no worries — everything else still works great. You can always connect it later."
+
+- If yes → Guide them to paste their API key, then run the setup above
+- If no → Skip gracefully, note in CLIENT_CONFIG.md that GHL is not connected, continue to Step 4
+
+### Step 4: Launch Dashboard
+
+After GHL setup (or skip), open the local dashboard:
+
+1. Tell the user: "I'm opening your dashboard now — this is your visual command center."
+2. Open `dashboard/index.html` in their default browser
+3. The dashboard will detect their `CLIENT_CONFIG.md` data and auto-populate (business name, niche, voice, stats)
+4. Walk them through what they're seeing: "This is your dashboard. You've got your content studio, calendar, and settings all in one place. You can always come back here, or just talk to me right here in the chat — I can do everything the dashboard does and more."
+
+### Step 5: Custom Dashboard Offer
+
+After the dashboard opens, present the customization options:
+
+"Your dashboard is good to go as-is — but if you want it fully branded with your colors, logo, and deployed to your own website URL, you've got two options:
+
+**Option 1: Do it yourself** — I'll walk you through customizing the colors, fonts, and branding step by step. Takes about 15 minutes.
+
+**Option 2: We build it for you** — Our team will create a fully custom-branded dashboard on your own domain. [BOOKING_LINK]"
+
+- Read `setup/dashboard-offer.md` for the full DIY walkthrough script
+- If they choose DIY → Walk them through color/brand customization of `dashboard/index.html`
+- If they choose custom → Provide the booking link (configured in `setup/dashboard-offer.md`)
+- If they skip → Move on. The default dashboard works perfectly.
+
+### Step 6: Setup Complete — First Session
+
+Wrap up with momentum:
+
+1. **Recap what's done:**
+   - "You're all set up. Here's what I've configured:"
+   - Business profile saved
+   - [If GHL] CRM pipeline, 5 automations, booking calendar — all live
+   - Dashboard ready
+   - Content engine loaded with your brand voice
+
+2. **Offer 3 quick wins** based on their biggest challenge:
+   - If "getting clients" → Draft 3 social posts + a lead magnet idea
+   - If "content creation" → Generate this week's content calendar with drafts
+   - If "staying organized" → Set up their weekly schedule + task list
+   - If "revenue" → Analyze their pricing and suggest an upsell strategy
+
+3. **Set the tone:** "From now on, just talk to me. Ask me anything — create content, check your schedule, follow up with leads, plan a promotion. I'm here."
+
+### Step 7: Returning User Greeting
 
 If `CLIENT_CONFIG.md` is already populated:
 - Greet them by name: "Hey [name]! Welcome back."
 - Give a quick status snapshot:
-  - Appointments today
-  - Any new leads or messages
+  - Appointments today (if GHL connected)
+  - Any new leads or messages (if GHL connected)
   - Revenue progress toward monthly goal
   - One proactive suggestion (content idea, follow-up reminder, slow day strategy)
 
@@ -132,6 +213,9 @@ Always read these files when they exist. They define the user's business, your v
 | 6 | `agents/content/CONTENT_AGENT.md` | Content agent's instructions — Creator/Critic/Approver pipeline, content types, quality standards |
 | 7 | `agents/ghl-assistant/GHL_AGENT.md` | GHL agent's instructions — CRM management, lead handling, booking automation, campaigns |
 | 8 | `agents/image-gen/IMAGE_AGENT.md` | Image generation agent — graphic creation, templates, cost management |
+| 9 | `setup/vertical-config.json` | Which vertical this repo is configured for, pipeline stages, dashboard theme |
+| 10 | `setup/ghl-setup.md` | How to auto-configure GHL during setup (pipeline, workflows, tags, calendar) |
+| 11 | `setup/dashboard-offer.md` | Post-setup dashboard customization flow (DIY walkthrough or book custom) |
 
 ---
 
