@@ -1,5 +1,7 @@
 # Training Video Outline
 
+> **Funnel context:** This walkthrough video is the post-download onboarding step in the sales funnel. After a beauty professional completes the Level 1 certification and downloads the OS, this is the next thing they watch. See `sales/FUNNEL.md` for the full funnel map.
+
 **Length:** 12-15 minutes
 **Format:** Screen recording with voiceover (Justin records)
 **Audience:** Non-technical beauty professionals who have never used a terminal or Claude Code
@@ -89,9 +91,11 @@
 
 "That's it. Your AI handles the business side so you can focus on your clients."
 
-## Outro (12:30 - 13:00)
+## Outro (12:30 - 13:30)
 
 "You're all set. If you ever get stuck, just ask 'help me with [whatever]' and it'll guide you. Check the docs folder for FAQs and troubleshooting. Welcome to the future of running your beauty business."
+
+"And when you're ready for the next level — fully automated social media, content created and posted for you across all platforms — ask about Beauty Boss OS, the Boss Edition. That's the Boss Blowout. But for now, you've got everything you need. Go talk to your business."
 
 ---
 

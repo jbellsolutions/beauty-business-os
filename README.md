@@ -8,6 +8,14 @@ A Claude Code project that runs your entire beauty business through conversation
 
 No technical knowledge required. No software to learn. Just talk to your business.
 
+## Why We Built This
+
+Built by someone who spent years inside the beauty industry — working with hundreds of beauty businesses, from solo estheticians to multi-location med spas. Every modality. Every price point. In the trenches, day-to-day.
+
+The pattern was always the same: incredible talent, drowning in the business side. Paying thousands for marketing agencies, consultants, and programs that overpromise and underdeliver. Or trying to do it all yourself and running out of hours in the day.
+
+Beauty Business OS changes that. No technical knowledge. No AI expertise. No expensive monthly retainers. Just talk to your business and it handles the rest.
+
 ## Install (3 Steps)
 
 ### Step 1: Install Claude Code
